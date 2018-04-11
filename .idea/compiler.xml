@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="common_main" target="1.9" />
+      <module name="common_test" target="1.9" />
+      <module name="elypiaapi_main" target="1.9" />
+      <module name="elypiaapi_test" target="1.9" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
