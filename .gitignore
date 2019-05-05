@@ -49,8 +49,11 @@ gradle-app.setting
 # Project #
 ###########
 
+# SSL
+*.p12
+
 # Configuration
-/*.yml
+/application.yml
 
 # IntelliJ
 /out/

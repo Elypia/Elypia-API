@@ -1,0 +1,21 @@
+image: gradle:jdk11-slim
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+build:
+  stage: build
+  script: gradle --build-cache bootJar
+  cache:
+    paths:
+      - .gradle
+      - build
+
+test:
+  stage: test
+  script:
+    - gradle --build-cache check
+  cache:
+    paths:
+      - .gradle
+      - build
