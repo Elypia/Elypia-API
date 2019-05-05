@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/elypia?serverTimezone=UTC&useSSL=false
+  jpa:
+    open-in-view: false
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+server:
+  ssl:
+    key-store-type: PKCS12
+    key-store: keystore.p12
+    key-alias: elypia
