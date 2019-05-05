@@ -18,6 +18,7 @@ test:
   stage: test
   script:
     - gradle --build-cache check
+    - cat build/reports/jacoco/test/html/index.html
   cache:
     paths:
       - .gradle
