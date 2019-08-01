@@ -6,20 +6,17 @@ variables:
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
 
+cache:
+  paths:
+    - .gradle
+    - build
+
 build:
   stage: build
-  script: gradle --build-cache bootJar
-  cache:
-    paths:
-      - .gradle
-      - build
+  script: gradle --build-cache --full-stacktrace shadowJar
 
 test:
   stage: test
   script:
-    - gradle --build-cache check
+    - gradle --build-cache --full-stacktrace check
     - cat build/reports/jacoco/test/html/index.html
-  cache:
-    paths:
-      - .gradle
-      - build

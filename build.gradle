@@ -1,15 +1,33 @@
+/*
+ * Copyright (C) 2019  Elypia
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 plugins {
     id "java"
     id "idea"
     id "jacoco"
-    id "org.springframework.boot" version "2.1.4.RELEASE"
-    id "io.spring.dependency-management" version "1.0.7.RELEASE"
+    id "org.springframework.boot" version "2.1.6.RELEASE"
+    id "io.spring.dependency-management" version "1.0.8.RELEASE"
 }
 
-bootJar {
-    baseName = "elypia-api"
-    version = "0.0.1"
-}
+group = "com.elypia.backend"
+version = "1.0.0"
+description = "The core API that most of Elypia's services are interfacing with."
+sourceCompatibility = 11
+targetCompatibility = 11
 
 repositories {
     mavenCentral()
@@ -24,15 +42,23 @@ dependencies {
     testImplementation "org.springframework.security:spring-security-test"
 
     // Database
-    runtimeOnly "mysql:mysql-connector-java:8.0.16"
+    runtimeOnly "mysql:mysql-connector-java:8.0.17"
     testImplementation "com.h2database:h2:1.4.199"
 
     // Logging
     implementation "org.slf4j:slf4j-api:1.7.26"
+    runtimeOnly "com.google.cloud:google-cloud-logging-logback:0.102.0-alpha"
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
 
     // Testing
-    testImplementation "org.junit.jupiter:junit-jupiter:5.4.2"
+    testImplementation "org.junit.jupiter:junit-jupiter:5.5.1"
+}
+
+[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+bootJar {
+    baseName = "elypia-api"
+    version = this.version
 }
 
 /**
@@ -49,7 +75,7 @@ test {
 }
 
 jacoco {
-    toolVersion = "0.8.3"
+    toolVersion = "0.8.4"
 }
 
 jacocoTestReport {

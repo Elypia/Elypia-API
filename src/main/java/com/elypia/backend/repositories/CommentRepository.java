@@ -14,10 +14,22 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.elypia.backend.authorization;
+package com.elypia.backend.repositories;
 
-public enum OAuthScope {
+import com.elypia.backend.entities.Comment;
+import org.springframework.data.domain.*;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
-    READ_EMAIL,
-    READ_PHONE_NUMBER
+@Repository
+public interface CommentRepository extends PagingAndSortingRepository<Comment, Integer> {
+
+    Comment findCommentById(int id);
+
+    default Slice<Comment> findAllByArticleId(int articleId, int page) {
+        var req = PageRequest.of(page, 20, Sort.Direction.DESC, "createdDate");
+        return findAllByArticleId(articleId, req);
+    }
+
+    Slice<Comment> findAllByArticleId(int articleId, Pageable pageable);
 }

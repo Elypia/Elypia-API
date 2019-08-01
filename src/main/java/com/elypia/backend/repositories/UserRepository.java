@@ -14,10 +14,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.elypia.backend.authorization;
+package com.elypia.backend.repositories;
 
-public enum OAuthScope {
+import com.elypia.backend.entities.User;
+import org.springframework.data.repository.CrudRepository;
 
-    READ_EMAIL,
-    READ_PHONE_NUMBER
+public interface UserRepository extends CrudRepository<User, Integer> {
+
+    User findById(int id);
+    User findByEmail(String email);
 }

@@ -14,24 +14,32 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.elypia.backend.forms;
+package com.elypia.backend.entities;
 
-import org.hibernate.validator.constraints.Length;
-import org.springframework.lang.NonNull;
+import javax.persistence.*;
 
-import javax.validation.constraints.NotEmpty;
+@Entity(name = "tags")
+@Table
+public class ArticleTag {
 
-public class CommentForm {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "tag_id")
+    private int id;
 
-    @NonNull
+    @Column(name = "article_id")
     private int articleId;
 
-    private Integer parentCommentId;
+    @Column(name = "tag")
+    private int tag;
 
-    @NonNull
-    @NotEmpty
-    @Length(min = 1, max = 2048)
-    private String content;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getArticleId() {
         return articleId;
@@ -41,19 +49,11 @@ public class CommentForm {
         this.articleId = articleId;
     }
 
-    public Integer getParentCommentId() {
-        return parentCommentId;
+    public int getTag() {
+        return tag;
     }
 
-    public void setParentCommentId(Integer parentCommentId) {
-        this.parentCommentId = parentCommentId;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+    public void setTag(int tag) {
+        this.tag = tag;
     }
 }

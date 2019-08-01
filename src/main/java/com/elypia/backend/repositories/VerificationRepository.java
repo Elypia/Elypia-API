@@ -14,10 +14,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.elypia.backend.authorization;
+package com.elypia.backend.repositories;
 
-public enum OAuthScope {
+import com.elypia.backend.entities.VerificationToken;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-    READ_EMAIL,
-    READ_PHONE_NUMBER
+@Repository
+public interface VerificationRepository extends CrudRepository<VerificationToken, Integer> {
+
+    VerificationToken findByToken(String token);
 }
