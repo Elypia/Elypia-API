@@ -27,7 +27,9 @@ import java.util.List;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final List<String> CORS = List.of(
-        "https://localhost:3000", "https://localhost:4200", "https://elypia.com"
+        "https://elypia.com", // Live Website
+        "https://localhost:4200", "http://localhost:4200", // Angular Development
+        "https://localhost:3000", "http://localhost:3000" // Angular Light Webserver
     );
 
     private static final List<String> METHODS = List.of(
