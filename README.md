@@ -13,9 +13,9 @@ you can and can't do and any requirements if you want to use or derive work from
 
 [discord]: https://discord.gg/hprGMaM "Discord Invite"
 [discord-members]: https://discordapp.com/api/guilds/184657525990359041/widget.png "Discord Shield"
-[gitlab]: https://gitlab.com/Elypia/elypia.com-api/commits/master "Repository on GitLab"
-[gitlab-build]: https://gitlab.com/Elypia/elypia.com-api/badges/master/pipeline.svg "GitLab Build Shield"
-[gitlab-coverage]: https://gitlab.com/Elypia/elypia.com-api/badges/master/coverage.svg "GitLab Coverage Shield"
+[gitlab]: https://gitlab.com/Elypia/elypia-api/commits/master "Repository on GitLab"
+[gitlab-build]: https://gitlab.com/Elypia/elypiaapi/badges/master/pipeline.svg "GitLab Build Shield"
+[gitlab-coverage]: https://gitlab.com/Elypia/elypia-api/badges/master/coverage.svg "GitLab Coverage Shield"
 [elypia]: https://elypia.com/ "Elypia Homepage"
 [agpl]: https://www.gnu.org/licenses/agpl-3.0.en.html "AGPL"
 [agpl-tldr]: https://tldrlegal.com/license/gnu-affero-general-public-license-v3-(agpl-3.0) "TLDR of AGPL"

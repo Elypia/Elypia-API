@@ -13,7 +13,7 @@ cache:
 
 build:
   stage: build
-  script: gradle --build-cache --full-stacktrace shadowJar
+  script: gradle --build-cache --full-stacktrace bootJar
 
 test:
   stage: test

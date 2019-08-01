@@ -23,7 +23,7 @@ plugins {
     id "io.spring.dependency-management" version "1.0.8.RELEASE"
 }
 
-group = "com.elypia.backend"
+group = "com.elypia.api"
 version = "1.0.0"
 description = "The core API that most of Elypia's services are interfacing with."
 sourceCompatibility = 11

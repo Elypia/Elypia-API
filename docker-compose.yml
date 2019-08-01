@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  api:
+    build: elypia/elypia-api:1.0.0
+    volumes:
+      - .:/code
+      - logvolume01:/var/log
+  database:
+    image: mysql:8.0.17
+    volumes:
+      - data:/var/lib/mysql
+volumes:
+  data: {}

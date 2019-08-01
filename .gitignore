@@ -46,7 +46,7 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 ##################
-# elypia.com-api #
+# elypia-api #
 ##################
 
 # SSL
@@ -54,6 +54,7 @@ gradle-app.setting
 
 # Configuration
 /application.yml
+/config/
 
 # IntelliJ
 /out/
