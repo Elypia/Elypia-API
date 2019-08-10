@@ -16,33 +16,26 @@
 
 package com.elypia.api.forms;
 
-import com.elypia.api.validation.Password;
-import org.springframework.lang.NonNull;
+import com.elypia.api.validation.EmailNotTaken;
 
 import javax.validation.constraints.*;
 
-public class RegisterForm {
+/**
+ * This form is received from the frontend when the user
+ * attempts to sign up for an Elypia account.
+ */
+public class RegistrationForm extends PasswordForm {
 
-    @Email
+    /** The email address that the user is signing up with. */
     @NotNull
     @NotEmpty
+    @Email
+    @EmailNotTaken
     private String email;
 
-    @NonNull
-    @NotEmpty
-    private String username;
-
-    @NonNull
-    @NotEmpty
-    @Password
-    private String password;
-
-    /**
-     * The password verification box, there is no need to
-     * apply checks on this as it must be the same as {@link #password}
-     * so if that passes the checks, so will this.
-     */
-    private String verifyPassword;
+    /** The user must have accepted terms of service, privacy policy, and cookies. */
+    @AssertTrue
+    private boolean acceptsTerms;
 
     public String getEmail() {
         return email;
@@ -52,27 +45,11 @@ public class RegisterForm {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
+    public boolean isAcceptsTerms() {
+        return acceptsTerms;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getVerifyPassword() {
-        return verifyPassword;
-    }
-
-    public void setVerifyPassword(String verifyPassword) {
-        this.verifyPassword = verifyPassword;
+    public void setAcceptsTerms(boolean acceptsTerms) {
+        this.acceptsTerms = acceptsTerms;
     }
 }

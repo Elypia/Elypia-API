@@ -14,26 +14,21 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.elypia.api.controllers;
+package com.elypia.api.repositories;
 
 import com.elypia.api.entities.Account;
-import com.elypia.api.repositories.AccountRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.data.repository.CrudRepository;
 
-@RequestMapping("/api/accounts")
-@RestController
-public class UserController {
+public interface AccountRepository extends CrudRepository<Account, Integer> {
 
-    private AccountRepository accountRepo;
+    Account findById(int id);
+    Account findByEmail(String email);
 
-    @Autowired
-    public UserController(AccountRepository accountRepo) {
-        this.accountRepo = accountRepo;
-    }
-
-    @GetMapping
-    public Account getAccount(@RequestParam int userId) {
-        return accountRepo.findById(userId);
-    }
+    /**
+     * Check if an account with this email address exists.
+     *
+     * @param email The email to lookup.
+     * @return If the email appeared in the {@link Account accounts} table.
+     */
+    boolean existsUserByEmail(String email);
 }

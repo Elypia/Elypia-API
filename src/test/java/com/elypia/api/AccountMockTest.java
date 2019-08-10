@@ -17,8 +17,8 @@
 package com.elypia.api;
 
 import com.elypia.api.controllers.UserController;
-import com.elypia.api.entities.User;
-import com.elypia.api.repositories.UserRepository;
+import com.elypia.api.entities.Account;
+import com.elypia.api.repositories.AccountRepository;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -36,7 +36,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class UserMockTest {
+public class AccountMockTest {
 
     private static BCryptPasswordEncoder encoder;
 
@@ -44,7 +44,7 @@ public class UserMockTest {
     private UserController controller;
 
     @MockBean
-    private UserRepository userRepo;
+    private AccountRepository userRepo;
 
     @BeforeAll
     public static void beforeAll() {
@@ -53,9 +53,9 @@ public class UserMockTest {
 
     @Test
     public void getUserTest() {
-        User user = new User(1, "seth@elypia.com", encoder.encode("@123pass@"), true, true);
-        Mockito.when(userRepo.findById(1)).thenReturn(user);
-        User resp = controller.getUser(1);
+        Account account = new Account(1, "seth@elypia.com", encoder.encode("@123pass@"), true, true);
+        Mockito.when(userRepo.findById(1)).thenReturn(account);
+        Account resp = controller.getAccount(1);
 
         assertAll("Match user correctly",
             () -> assertEquals(1, resp.getId()),

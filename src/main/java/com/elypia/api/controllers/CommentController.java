@@ -36,7 +36,7 @@ public class CommentController {
 
     @PostMapping
     public Comment createComment(@RequestBody CommentForm form) {
-        Comment comment = new Comment(form);
+        Comment comment = new Comment(form.getArticleId(), form.getParentCommentId(), form.getContent());
         return commentRepo.save(comment);
     }
 

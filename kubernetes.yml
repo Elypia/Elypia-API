@@ -1,0 +1,104 @@
+---
+# Expose the Elypia Backend
+apiVersion: v1
+kind: Service
+metadata:
+  name: elypia-api-http
+  labels:
+    app: elypia-api
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 80
+---
+# Deploy the Elypia Backend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elypia-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elypia-api
+  template:
+    metadata:
+      labels:
+        app: elypia-api
+    spec:
+      volumes:
+        - name: db-ssl
+          secret:
+            secretName: db-ssl
+      containers:
+        - name: elypia-api
+          image: us.gcr.io/elypia/elypia-api:1.0.0
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /home/elypia/config/
+              name: db-ssl
+          env:
+            - name: DATABASE_IP
+              valueFrom:
+                secretKeyRef:
+                  name: spring-config
+                  key: DATABASE_IP
+            - name: DATABASE_TRUST_KEYSTORE
+              valueFrom:
+                secretKeyRef:
+                  name: spring-config
+                  key: DATABASE_TRUST_KEYSTORE
+            - name: DATABASE_TRUST_KEYSTORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: spring-config
+                  key: DATABASE_TRUST_KEYSTORE_PASSWORD
+            - name: DATABASE_CLIENT_KEYSTORE
+              valueFrom:
+                secretKeyRef:
+                  name: spring-config
+                  key: DATABASE_CLIENT_KEYSTORE
+            - name: DATABASE_CLIENT_KEYSTORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: spring-config
+                  key: DATABASE_CLIENT_KEYSTORE_PASSWORD
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: spring-config
+                  key: DATABASE_PASSWORD
+            - name: RECAPTCHA_SITE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: spring-config
+                  key: RECAPTCHA_SITE_KEY
+            - name: RECAPTCHA_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: spring-config
+                  key: RECAPTCHA_SECRET_KEY
+          resources:
+            requests:
+              cpu: 100m
+          readinessProbe:
+            httpGet:
+              path: /api/articles/recent
+              port: 8080
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+            periodSeconds: 15
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /api/articles/recent
+              port: 8080
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+            periodSeconds: 15
+            failureThreshold: 3
+---

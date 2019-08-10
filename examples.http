@@ -1,0 +1,8 @@
+# This just has some quick example requests you can do to verify your
+# development environment is set up correctly.
+
+# Get recent posts if any exist.
+GET http://localhost:8081/api/articles/recent
+Accept: application/json
+
+###

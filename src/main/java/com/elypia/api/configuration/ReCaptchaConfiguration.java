@@ -14,13 +14,31 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.elypia.api.repositories;
+package com.elypia.api.configuration;
 
-import com.elypia.api.entities.User;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
-public interface UserRepository extends CrudRepository<User, Integer> {
+@Component
+@ConfigurationProperties(prefix = "google.recaptcha")
+public class ReCaptchaConfiguration {
 
-    User findById(int id);
-    User findByEmail(String email);
+    private String siteKey;
+    private String secretKey;
+
+    public String getSiteKey() {
+        return siteKey;
+    }
+
+    public void setSiteKey(String siteKey) {
+        this.siteKey = siteKey;
+    }
+
+    public String getSecretKey() {
+        return secretKey;
+    }
+
+    public void setSecretKey(String secretKey) {
+        this.secretKey = secretKey;
+    }
 }

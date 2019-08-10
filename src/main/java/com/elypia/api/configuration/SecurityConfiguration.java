@@ -14,11 +14,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.elypia.api;
+package com.elypia.api.configuration;
 
+import com.elypia.api.services.AccountDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.*;
 
 import java.util.List;
@@ -36,13 +42,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         "HEAD", "GET", "POST", "PATCH", "DELETE", "OPTIONS"
     );
 
+    private final UserDetailsService userDetailsService;
+
+    @Autowired
+    public SecurityConfiguration(final AccountDetailsService accountDetailsService) {
+        this.userDetailsService = accountDetailsService;
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors();
+        http.cors()
+            .configurationSource(getCorsConfigurationSource());
     }
 
     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
+    public BCryptPasswordEncoder getBCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public CorsConfigurationSource getCorsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(CORS);
         configuration.setAllowedMethods(METHODS);
@@ -51,5 +70,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", configuration);
 
         return source;
+    }
+
+    @Bean
+    public AuthenticationManager getAuthenticationManager() throws Exception {
+        return authenticationManager();
+    }
+
+    @Autowired
+    public void configureAuthenticationManagerBuilder(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(getBCryptPasswordEncoder());
     }
 }

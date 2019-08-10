@@ -35,23 +35,25 @@ repositories {
 
 dependencies {
     // Spring
-    implementation "org.springframework.boot:spring-boot-starter-web"
-    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
-    implementation "org.springframework.boot:spring-boot-starter-security"
-    testImplementation "org.springframework.boot:spring-boot-starter-test"
-    testImplementation "org.springframework.security:spring-security-test"
+    implementation "org.springframework.boot:spring-boot-starter-web:2.1.6.RELEASE"
+    implementation "org.springframework.boot:spring-boot-starter-security:2.1.6.RELEASE"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:2.1.6.RELEASE"
 
     // Database
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:2.1.6.RELEASE"
     runtimeOnly "mysql:mysql-connector-java:8.0.17"
-    testImplementation "com.h2database:h2:1.4.199"
 
     // Logging
     implementation "org.slf4j:slf4j-api:1.7.26"
+    runtimeOnly "org.codehaus.janino:janino:3.0.15"
     runtimeOnly "com.google.cloud:google-cloud-logging-logback:0.102.0-alpha"
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
 
     // Testing
     testImplementation "org.junit.jupiter:junit-jupiter:5.5.1"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:2.1.6.RELEASE"
+    testImplementation "org.springframework.security:spring-security-test:5.1.5.RELEASE"
+    testRuntimeOnly "com.h2database:h2:1.4.199"
 }
 
 [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'

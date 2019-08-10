@@ -16,9 +16,8 @@
 
 package com.elypia.api.entities;
 
-import com.elypia.api.forms.CommentForm;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity(name = "comments")
@@ -39,9 +38,11 @@ public class Comment {
     @Column(name = "user_id")
     private int userId;
 
+    @NotNull
     @Column(name = "content")
     private String content;
 
+    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
     private Date createdDate;
@@ -50,14 +51,14 @@ public class Comment {
         // Do nothing
     }
 
-    public Comment(CommentForm form) {
-        this.articleId = form.getArticleId();
-        this.parentCommentId = form.getParentCommentId();
-        this.content = form.getContent();
-    }
-
     public Comment(int articleId) {
         this.articleId = articleId;
+    }
+
+    public Comment(int articleId, Integer parentCommentId, String content) {
+        this.articleId = articleId;
+        this.parentCommentId = parentCommentId;
+        this.content = content;
     }
 
     public int getId() {

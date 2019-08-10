@@ -16,8 +16,8 @@
 
 package com.elypia.api;
 
-import com.elypia.api.entities.User;
-import com.elypia.api.repositories.UserRepository;
+import com.elypia.api.entities.Account;
+import com.elypia.api.repositories.AccountRepository;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-public class UserJpaTest {
+public class AccountJpaTest {
 
     private static BCryptPasswordEncoder encoder;
 
@@ -42,7 +42,7 @@ public class UserJpaTest {
     private TestEntityManager entityManager;
 
     @Autowired
-    private UserRepository userRepo;
+    private AccountRepository userRepo;
 
     @BeforeAll
     public static void beforeAll() {
@@ -52,21 +52,21 @@ public class UserJpaTest {
     @BeforeEach
     public void beforeEach() {
         entityManager.clear();
-        User user = new User("seth@elypia.com", encoder.encode("AaAa123@@"));
-        entityManager.persist(user);
+        Account account = new Account("seth@elypia.com", encoder.encode("AaAa123@@"));
+        entityManager.persist(account);
         entityManager.flush();
     }
 
     @Test
     public void getUser() {
-        User user = userRepo.findByEmail("seth@elypia.com");
+        Account account = userRepo.findByEmail("seth@elypia.com");
 
         assertAll("Match user correctly",
-            () -> assertEquals("seth@elypia.com", user.getEmail()),
-            () -> assertNull(user.getPhoneNumber()),
-            () -> assertTrue(encoder.matches("AaAa123@@", user.getPassword())),
-            () -> assertFalse(user.isVerified()),
-            () -> assertFalse(user.isAdmin())
+            () -> assertEquals("seth@elypia.com", account.getEmail()),
+            () -> assertNull(account.getPhoneNumber()),
+            () -> assertTrue(encoder.matches("AaAa123@@", account.getPassword())),
+            () -> assertFalse(account.isVerified()),
+            () -> assertFalse(account.isAdmin())
         );
     }
 }

@@ -16,6 +16,8 @@
 
 package com.elypia.api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity(name = "tags")
@@ -27,11 +29,21 @@ public class ArticleTag {
     @Column(name = "tag_id")
     private int id;
 
-    @Column(name = "article_id")
-    private int articleId;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "article_id")
+    private Article article;
 
     @Column(name = "tag")
-    private int tag;
+    private String tag;
+
+    public ArticleTag() {
+        // Do nothing
+    }
+
+    public ArticleTag(String tag) {
+        this.tag = tag;
+    }
 
     public int getId() {
         return id;
@@ -41,19 +53,19 @@ public class ArticleTag {
         this.id = id;
     }
 
-    public int getArticleId() {
-        return articleId;
+    public Article getArticle() {
+        return article;
     }
 
-    public void setArticleId(int articleId) {
-        this.articleId = articleId;
+    public void setArticle(Article article) {
+        this.article = article;
     }
 
-    public int getTag() {
+    public String getTag() {
         return tag;
     }
 
-    public void setTag(int tag) {
+    public void setTag(String tag) {
         this.tag = tag;
     }
 }

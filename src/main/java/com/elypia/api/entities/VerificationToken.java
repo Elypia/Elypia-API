@@ -29,8 +29,8 @@ public class VerificationToken {
     private int id;
 
     @OneToOne()
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     @Column(name = "token")
     private String token;
@@ -46,12 +46,12 @@ public class VerificationToken {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public String getToken() {

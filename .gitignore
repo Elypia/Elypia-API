@@ -45,18 +45,24 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 
-##################
+##############
 # elypia-api #
-##################
-
-# SSL
-*.p12
+##############
 
 # Configuration
-/application.yml
-/config/
+/config/**
+*.p12
+*.jks
+*.key
+*.env
 
 # IntelliJ
 /out/
 /.idea/
 *.iml
+
+# Eclipse / vscode
+.settings
+bin
+.classpath
+.project

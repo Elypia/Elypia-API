@@ -14,26 +14,28 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.elypia.api.controllers;
+package com.elypia.api.forms;
 
-import com.elypia.api.entities.Account;
-import com.elypia.api.repositories.AccountRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import com.elypia.api.validation.VerifyPassword;
+import org.springframework.lang.NonNull;
 
-@RequestMapping("/api/accounts")
-@RestController
-public class UserController {
+import javax.validation.constraints.NotEmpty;
 
-    private AccountRepository accountRepo;
+/**
+ * Specify a new password for an account.
+ */
+@VerifyPassword
+public class PasswordResetForm extends PasswordForm {
 
-    @Autowired
-    public UserController(AccountRepository accountRepo) {
-        this.accountRepo = accountRepo;
+    @NonNull
+    @NotEmpty
+    private String token;
+
+    public String getToken() {
+        return token;
     }
 
-    @GetMapping
-    public Account getAccount(@RequestParam int userId) {
-        return accountRepo.findById(userId);
+    public void setToken(String token) {
+        this.token = token;
     }
 }

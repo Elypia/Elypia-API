@@ -20,3 +20,16 @@ test:
   script:
     - gradle --build-cache --full-stacktrace check
     - cat build/reports/jacoco/test/html/index.html
+
+deploy:
+  image: google/cloud-sdk:256.0.0
+  only:
+    - tags
+  stage: deploy
+  script:
+    - echo $GCP_SA_KEY > /tmp/$CI_PIPELINE_ID.json
+    - gcloud auth activate-service-account --key-file /tmp/$CI_PIPELINE_ID.json
+    - gcloud --quiet --project $GCP_PROJECT_ID app deploy
+    - /tmp/$CI_PIPELINE_ID.json
+  cache:
+    policy: pull

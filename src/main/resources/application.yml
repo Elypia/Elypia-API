@@ -1,6 +1,24 @@
+# Don't be afraid to override any of these settings, they've just been put
+# here as most of them will persist between development environments.
+#
+# If you're a developer, it's preferable to make your environment match the settings
+# where reasonable, look at `application-prod.yml` to see additional configuration for production.
+#
+# Ideally run this with the `prod` profile with all environment variables required, otherwise
+# OUTSIDE of the classpath, create your own profile and use that instead.
+
 spring:
+  application:
+    name: Elypia API
   datasource:
-    url: jdbc:mysql://localhost:3306/elypia?serverTimezone=UTC&useSSL=false
+    continue-on-error: false
+    username: elypia
   jpa:
+    database-platform: org.hibernate.dialect.MySQL57Dialect
     open-in-view: false
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+  mail:
+    default-encoding: UTF-8
+    host: smtp-relay.gmail.com
+    port: 587
+    protocol: smtp
+    test-connection: true

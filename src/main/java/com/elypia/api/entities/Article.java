@@ -16,9 +16,11 @@
 
 package com.elypia.api.entities;
 
-import com.elypia.api.forms.ArticleForm;
+import com.elypia.api.serializers.TagsSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.*;
 
 @Entity(name = "articles")
@@ -30,17 +32,21 @@ public class Article {
     @Column(name = "article_id")
     private int id;
 
+    @NotNull
     @Column(name = "title")
     private String title;
 
+    @NotNull
     @Column(name = "content")
     private String content;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "tags", joinColumns = @JoinColumn(name = "article_id"))
-    @Column(name = "tag")
-    private List<String> tags;
+    @JsonSerialize(using = TagsSerializer.class)
+    @NotNull
+    @OneToMany
+    @JoinColumn(name = "article_id")
+    private List<ArticleTag> tags;
 
+    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
     private Date createdDate;
@@ -53,10 +59,10 @@ public class Article {
         // Do nothing
     }
 
-    public Article(ArticleForm form) {
-        this.title = form.getTitle();
-        this.content = form.getContent();
-        this.tags = form.getTags();
+    public Article(String title, String content, List<ArticleTag> tags) {
+        this.title = title;
+        this.content = content;
+        this.tags = tags;
     }
 
     public int getId() {
@@ -83,11 +89,11 @@ public class Article {
         this.content = content;
     }
 
-    public List<String> getTags() {
+    public List<ArticleTag> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(List<ArticleTag> tags) {
         this.tags = tags;
     }
 

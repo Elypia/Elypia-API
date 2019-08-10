@@ -16,13 +16,14 @@
 
 package com.elypia.api.controllers;
 
-import com.elypia.api.entities.Article;
+import com.elypia.api.entities.*;
 import com.elypia.api.forms.ArticleForm;
 import com.elypia.api.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequestMapping("/api/articles")
 @RestController
@@ -37,7 +38,8 @@ public class ArticleController {
 
     @PostMapping
     public Article createPost(@RequestBody ArticleForm form) {
-        Article post = new Article(form);
+        List<ArticleTag> tags = form.getTags().stream().map(ArticleTag::new).collect(Collectors.toList());
+        Article post = new Article(form.getTitle(), form.getContent(), tags);
         return articleRepo.save(post);
     }
 

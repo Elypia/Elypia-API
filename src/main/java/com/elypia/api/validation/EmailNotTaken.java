@@ -16,24 +16,34 @@
 
 package com.elypia.api.validation;
 
+import com.elypia.api.services.AccountService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.validation.*;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = Password.Validator.class)
+@Constraint(validatedBy = EmailNotTaken.Validator.class)
 @Target({ ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Password {
+public @interface EmailNotTaken {
 
-    String message() default "password does not meet strength requirement";
+    String message() default "email has been used by another";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 
-    class Validator implements ConstraintValidator<Password, String> {
+    class Validator implements ConstraintValidator<EmailNotTaken, String> {
+
+        private AccountService accountService;
+
+        @Autowired
+        public Validator(AccountService accountService) {
+            this.accountService = accountService;
+        }
 
         @Override
         public boolean isValid(String value, ConstraintValidatorContext context) {
-            return value.length() <= 72 && value.length() >= 8;
+            return accountService.emailExists(value);
         }
     }
 }

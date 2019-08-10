@@ -16,24 +16,27 @@
 
 package com.elypia.api.validation;
 
+import com.elypia.api.forms.PasswordForm;
+
 import javax.validation.*;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = Password.Validator.class)
-@Target({ ElementType.FIELD})
+@Constraint(validatedBy = VerifyPassword.Validator.class)
+@Target({ ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Password {
+public @interface VerifyPassword {
 
-    String message() default "password does not meet strength requirement";
+    String message() default "passwords provided don't match";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 
-    class Validator implements ConstraintValidator<Password, String> {
+    class Validator implements ConstraintValidator<VerifyPassword, Object> {
 
         @Override
-        public boolean isValid(String value, ConstraintValidatorContext context) {
-            return value.length() <= 72 && value.length() >= 8;
+        public boolean isValid(Object value, ConstraintValidatorContext context) {
+            PasswordForm form = (PasswordForm)value;
+            return form.getPassword().equals(form.getVerifyPassword());
         }
     }
 }

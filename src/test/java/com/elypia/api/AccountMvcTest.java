@@ -17,7 +17,7 @@
 package com.elypia.api;
 
 import com.elypia.api.controllers.UserController;
-import com.elypia.api.entities.User;
+import com.elypia.api.entities.Account;
 import com.elypia.api.repositories.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -40,7 +40,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(UserController.class)
-public class UserMvcTest {
+public class AccountMvcTest {
 
     private static BCryptPasswordEncoder encoder;
 
@@ -48,7 +48,7 @@ public class UserMvcTest {
     private MockMvc mvc;
 
     @MockBean
-    private UserRepository userRepo;
+    private AccountRepository userRepo;
 
     @MockBean
     private VerificationRepository verifyRepo;
@@ -66,8 +66,8 @@ public class UserMvcTest {
 
     @Test
     public void emailDoesExist() throws Exception {
-        User user = new User(1, "seth@elypia.com", encoder.encode("@123pass@"), true, true);
-        Mockito.when(userRepo.findByEmail("seth@elypia.com")).thenReturn(user);
+        Account account = new Account(1, "seth@elypia.com", encoder.encode("@123pass@"), true, true);
+        Mockito.when(userRepo.findByEmail("seth@elypia.com")).thenReturn(account);
 
         mvc.perform(get("/api/users/exists").param("email", "seth@elypia.com"))
             .andExpect(status().isNoContent());

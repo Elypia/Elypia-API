@@ -16,13 +16,10 @@
 
 package com.elypia.api.entities;
 
-import com.elypia.api.forms.RegisterForm;
-
 import javax.persistence.*;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-@Entity(name = "users")
+@Entity(name = "accounts")
 @Table
 public class User {
 
@@ -31,53 +28,15 @@ public class User {
     @Column(name = "user_id")
     private int id;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "account_id")
+    private int accountId;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-    @Column(name = "user_password")
-    private byte[] password;
-
-    @Column(name = "is_verified")
-    private boolean isVerified;
-
-    @Column(name = "is_admin")
-    private boolean isAdmin;
-
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "usernames", joinColumns = @JoinColumn(name = "user_id"))
+    @OneToMany
     @Column(name = "username")
-    private List<String> usernames;
+    private List<Username> usernames;
 
     public User() {
         // Do nothing
-    }
-
-    public User(RegisterForm form) {
-        this(form.getEmail(), form.getPassword());
-    }
-
-    public User(String email, String password) {
-        this(0, email, password, false, false);
-    }
-
-    public User(String email, String password, boolean isVerified, boolean isAdmin) {
-        this(0, email, password, isVerified, isAdmin);
-    }
-
-    public User(int id, String email, String password, boolean isVerified, boolean isAdmin) {
-        this(id, email, null, password.getBytes(StandardCharsets.UTF_8), isVerified, isAdmin);
-    }
-
-    public User(int id, String email, String phoneNumber, byte[] password, boolean isVerified, boolean isAdmin) {
-        this.id = id;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-        this.isVerified = isVerified;
-        this.isAdmin = isAdmin;
     }
 
     public int getId() {
@@ -88,55 +47,19 @@ public class User {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getPassword() {
-        return new String(password, StandardCharsets.UTF_8);
-    }
-
-    public void setPassword(String password) {
-        this.password = password.getBytes(StandardCharsets.UTF_8);
-    }
-
-    public void setPassword(byte[] password) {
-        this.password = password;
-    }
-
-    public boolean isVerified() {
-        return isVerified;
-    }
-
-    public void setVerified(boolean verified) {
-        isVerified = verified;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
-    public List<String> getUsernames() {
+    public List<Username> getUsernames() {
         return usernames;
     }
 
-    public void setUsername(List<String> usernames) {
+    public void setUsername(List<Username> usernames) {
         this.usernames = usernames;
     }
 }
