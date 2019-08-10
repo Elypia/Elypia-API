@@ -8,6 +8,8 @@ to get data to display such as news, authentication, or users.
 * [MySQL 5.7][mysql]
 
 ## Running
+Please visit the Wiki for extra information regarding setup!
+
 ### Running in Production with [Docker][docker]
 When running the backend in production you should build the project and use the [Dockerfile][dockerfile]
 to build the image in order to deploy it, the image can use an external `application-{}.yml` files
