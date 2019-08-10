@@ -1,3 +1,29 @@
+# The configuration assumes a private configuration that looks like the following has been applied manually.
+#
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: spring-config
+# stringData:
+#   DATABASE_IP:
+#   DATABASE_TRUST_KEYSTORE:
+#   DATABASE_TRUST_KEYSTORE_PASSWORD:
+#   DATABASE_CLIENT_KEYSTORE:
+#   DATABASE_CLIENT_KEYSTORE_PASSWORD:
+#   DATABASE_PASSWORD:
+#   RECAPTCHA_SITE_KEY:
+#   RECAPTCHA_SECRET_KEY:
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: db-ssl
+# data:
+#   trust.jks:
+#   client.jks:
+# ---
+
 ---
 # Expose the Elypia Backend
 apiVersion: v1
