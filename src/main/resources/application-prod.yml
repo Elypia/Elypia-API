@@ -7,9 +7,10 @@ spring:
                                                                                              &trustCertificateKeyStorePassword=${DATABASE_TRUST_KEYSTORE_PASSWORD}\
                                                                                              &clientCertificateKeyStoreUrl=file:${DATABASE_CLIENT_KEYSTORE}\
                                                                                              &clientCertificateKeyStorePassword=${DATABASE_CLIENT_KEYSTORE_PASSWORD}"
-    username: "${DATABASE_USERNAME:elypia}"
-    password: "${DATABASE_PASSWORD}"
+    username: ${DATABASE_USERNAME:elypia}
+    password: ${DATABASE_PASSWORD}
 google:
   recaptcha:
-    site-key: "${RECAPTCHA_SITE_KEY}"
-    secret-key: "${RECAPTCHA_SECRET_KEY}"
+    enabled: true
+    site-key: ${RECAPTCHA_SITE_KEY}
+    secret-key: ${RECAPTCHA_SECRET_KEY}

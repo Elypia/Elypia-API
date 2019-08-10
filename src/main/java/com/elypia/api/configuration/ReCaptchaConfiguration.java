@@ -23,8 +23,17 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "google.recaptcha")
 public class ReCaptchaConfiguration {
 
+    private boolean enabled;
     private String siteKey;
     private String secretKey;
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
     public String getSiteKey() {
         return siteKey;

@@ -1,8 +1,15 @@
 # This just has some quick example requests you can do to verify your
 # development environment is set up correctly.
+#
+# IF FOR WHATEVER REASON YOU ARE RUNNING THE API ON ANOTHER PORT THAN 8080
+# THE REQUESTS MUCH REFLECT THIS CHANGE BEFORE THEY WILL WORK.
 
 # Get recent posts if any exist.
-GET http://localhost:8081/api/articles/recent
+GET http://localhost:8080/api/articles/recent
 Accept: application/json
 
 ###
+
+# Get recent posts if any exist.
+GET http://localhost:8080/api/articles/recent
+Accept: application/json

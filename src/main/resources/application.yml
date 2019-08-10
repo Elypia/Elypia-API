@@ -1,7 +1,7 @@
 # Don't be afraid to override any of these settings, they've just been put
 # here as most of them will persist between development environments.
 #
-# If you're a developer, it's preferable to make your environment match the settings
+# If you're a developer, it's preferable to make your environment match the production settings
 # where reasonable, look at `application-prod.yml` to see additional configuration for production.
 #
 # Ideally run this with the `prod` profile with all environment variables required, otherwise
@@ -12,7 +12,6 @@ spring:
     name: Elypia API
   datasource:
     continue-on-error: false
-    username: elypia
   jpa:
     database-platform: org.hibernate.dialect.MySQL57Dialect
     open-in-view: false
