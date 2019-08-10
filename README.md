@@ -9,26 +9,26 @@ to get data to display such as news, authentication, or users.
 
 ## Running
 ### Running in Production with [Docker][docker]
-When running the backend in production you should use the build the project and use the [Dockerfile][dockerfile]
+When running the backend in production you should build the project and use the [Dockerfile][dockerfile]
 to build the image in order to deploy it, the image can use an external `application-{}.yml` files
 however it defaults to using the internal `application-prod.yml` file in the classpath which
 externalizes the main configurable properties the Elypia API cares about to environment variables.  
 > Get more information on Spring configuration profiles [here][spring-profiles].
 
 #### Environment Variables
-| Environment Variable             | Default   | Description                                                                            |
-|----------------------------------|-----------|----------------------------------------------------------------------------------------|
-| DATABASE_IP                      | 127.0.0.1 | Host that runs an MySQL instance.                                                      |
-| DATABASE_PORT                    | 3306      | Port the server is running on.                                                         |
-| DATABASE_NAME                    | elypia    | Name of the database to connect to.                                                    |
-| DATABASE_TRUST_KEYSTORE          |           | Keystore containing a certificate the MySQL instance must authenticate itself against. |
-| DATABASE_TRUST_KEYSTORE_PASSWORD |           | The password for this trust certificate keystore.                                      |
-| DATABASE_CLIENT_KEYSTORE         |           | Keystore containing a key to authenticate this application to the MySQL instance.      |
-| DATABASE_CLIENT_PASSWORD         |           | Password for this client certificate keystore.                                         |
-| DATABASE_USERNAME                | elypia    | Database user to authenticate as.                                                      |
-| DATABASE_PASSWORD                |           | Password for the authenticating user.                                                  |
-| RECAPTCHA_SITE_KEY               |           | Site key to make requests to the Google Recaptcha API.                                 |
-| RECAPTCHA_SECRET_KEY             |           | Secret key to make requests to the Google Recaptcha API.                               |
+| Environment Variable             | Default   | Description                                                           |
+|----------------------------------|-----------|-----------------------------------------------------------------------|
+| DATABASE_IP                      | 127.0.0.1 | Host that runs an MySQL instance.                                     |
+| DATABASE_PORT                    | 3306      | Port the server is running on.                                        |
+| DATABASE_NAME                    | elypia    | Name of the database to connect to.                                   |
+| DATABASE_TRUST_KEYSTORE          |           | Keystore with certificate for MySQL instance to authenticate against. |
+| DATABASE_TRUST_KEYSTORE_PASSWORD |           | The password for this trust certificate keystore.                     |
+| DATABASE_CLIENT_KEYSTORE         |           | Keystore with key to authenticate this application to the MySQL.      |
+| DATABASE_CLIENT_PASSWORD         |           | Password for this client certificate keystore.                        |
+| DATABASE_USERNAME                | elypia    | Database user to authenticate as.                                     |
+| DATABASE_PASSWORD                |           | Password for the authenticating user.                                 |
+| RECAPTCHA_SITE_KEY               |           | Site key to make requests to the Google Recaptcha API.                |
+| RECAPTCHA_SECRET_KEY             |           | Secret key to make requests to the Google Recaptcha API.              |
 > Further configuration can be performed by looking at the Spring [documentation][spring-config]
 > including setting the `SPRING_PROFILES_ACTIVE` variable to change the profile from `prod`.
 
