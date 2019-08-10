@@ -1,4 +1,4 @@
-# Elypia API [![Discord][discord-members]][discord] [![GitLab Build][gitlab-build]][gitlab] [![GitLab Coverage][gitlab-coverage]][gitlab]
+# Elypia API [![Discord][discord-members]][discord] [![Internationalization][i18n-badge]][i18n] [![GitLab Build][gitlab-build]][gitlab] [![GitLab Coverage][gitlab-coverage]][gitlab]
 ## About
 API for [Elypia][elypia], this is the core API that most of our services are interfacing with in order
 to get data to display such as news, authentication, or users. 
@@ -57,6 +57,8 @@ you can and can't do and any requirements if you want to use or derive work from
 
 [discord]: https://discord.gg/hprGMaM "Discord Invite"
 [discord-members]: https://discordapp.com/api/guilds/184657525990359041/widget.png "Discord Shield"
+[i18n]: https://i18n.elypia.com/engage/elypia-backend/?utm "Weblate Translations"
+[i18n-badge]: https://i18n.elypia.com/widgets/elypia-backend/-/svg-badge.svg "Weblate Translation Badge"
 [gitlab]: https://gitlab.com/Elypia/elypia-api/commits/master "Repository on GitLab"
 [gitlab-build]: https://gitlab.com/Elypia/elypia-api/badges/master/pipeline.svg "GitLab Build Shield"
 [gitlab-coverage]: https://gitlab.com/Elypia/elypia-api/badges/master/coverage.svg "GitLab Coverage Shield"
