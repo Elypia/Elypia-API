@@ -17,9 +17,8 @@
 package com.elypia.api.forms;
 
 import com.elypia.api.validation.VerifyPassword;
-import org.springframework.lang.NonNull;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
 
 /**
  * Specify a new password for an account.
@@ -27,7 +26,7 @@ import javax.validation.constraints.NotEmpty;
 @VerifyPassword
 public class PasswordResetForm extends PasswordForm {
 
-    @NonNull
+    @NotNull
     @NotEmpty
     private String token;
 

@@ -7,9 +7,9 @@
 #   name: spring-config
 # stringData:
 #   DATABASE_IP:
-#   DATABASE_TRUST_KEYSTORE:
+#   DATABASE_TRUST_KEYSTORE: /home/elypia/config/trust.jks
 #   DATABASE_TRUST_KEYSTORE_PASSWORD:
-#   DATABASE_CLIENT_KEYSTORE:
+#   DATABASE_CLIENT_KEYSTORE: /home/elypia/config/client.jks
 #   DATABASE_CLIENT_KEYSTORE_PASSWORD:
 #   DATABASE_PASSWORD:
 #   RECAPTCHA_SITE_KEY:
@@ -26,17 +26,23 @@
 
 ---
 # Expose the Elypia Backend
+# If using Cloud Hosting, this may create a new static IP
+# on the host, make sure to update your DNS records to use it.
 apiVersion: v1
 kind: Service
 metadata:
-  name: elypia-api-http
+  name: elypia-api-service
   labels:
     app: elypia-api
 spec:
+  type: LoadBalancer
+  selector:
+    app: elypia-api
   ports:
-    - port: 8080
+    - name: http
+      port: 80
+      targetPort: 8080
       protocol: TCP
-      targetPort: 80
 ---
 # Deploy the Elypia Backend
 apiVersion: apps/v1
@@ -108,9 +114,6 @@ spec:
                 secretKeyRef:
                   name: spring-config
                   key: RECAPTCHA_SECRET_KEY
-          resources:
-            requests:
-              cpu: 100m
           readinessProbe:
             httpGet:
               path: /api/articles/recent

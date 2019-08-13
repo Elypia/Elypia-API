@@ -14,6 +14,8 @@ WORKDIR /home/elypia/
 # Copy over the application, it's just a single jar file.
 COPY ./build/libs/elypia-api-*.jar /home/elypia/elypia-api.jar
 
+EXPOSE 8080
+
 # On startup, execute the jar.
 ENTRYPOINT ["java", "-jar", "elypia-api.jar"]
 
