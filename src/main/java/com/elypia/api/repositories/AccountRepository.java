@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019  Elypia
+ * Copyright (C) 2019-2019  Elypia
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -30,5 +30,5 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
      * @param email The email to lookup.
      * @return If the email appeared in the {@link Account accounts} table.
      */
-    boolean existsUserByEmail(String email);
+    boolean existsAccountByEmail(String email);
 }

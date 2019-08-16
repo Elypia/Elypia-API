@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019  Elypia
+ * Copyright (C) 2019-2019  Elypia
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -49,7 +49,7 @@ public class AccountService {
      * @return If there is an account registered with this email address.
      */
     public boolean emailExists(String email) {
-        return accountRepo.existsUserByEmail(email);
+        return accountRepo.existsAccountByEmail(email);
     }
 
     public Account registerNewAccount(String email, String password) {

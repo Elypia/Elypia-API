@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019  Elypia
+ * Copyright (C) 2019-2019  Elypia
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -19,7 +19,7 @@ package com.elypia.api;
 import com.elypia.api.controllers.UserController;
 import com.elypia.api.entities.Account;
 import com.elypia.api.repositories.AccountRepository;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,22 +38,18 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class AccountMockTest {
 
-    private static BCryptPasswordEncoder encoder;
+    @MockBean
+    private AccountRepository userRepo;
 
     @Autowired
     private UserController controller;
 
-    @MockBean
-    private AccountRepository userRepo;
-
-    @BeforeAll
-    public static void beforeAll() {
-        encoder = new BCryptPasswordEncoder();
-    }
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     @Test
     public void getUserTest() {
-        Account account = new Account(1, "seth@elypia.com", encoder.encode("@123pass@"), true, true);
+        Account account = new Account(1, "seth@elypia.com", encoder.encode("AaAa123@@"), true, true);
         Mockito.when(userRepo.findById(1)).thenReturn(account);
         Account resp = controller.getAccount(1);
 
@@ -61,7 +57,7 @@ public class AccountMockTest {
             () -> assertEquals(1, resp.getId()),
             () -> assertEquals("seth@elypia.com", resp.getEmail()),
             () -> assertNull(resp.getPhoneNumber()),
-            () -> assertFalse(encoder.matches("AaAa123@@", resp.getPassword())),
+            () -> assertTrue(encoder.matches("AaAa123@@", resp.getPassword())),
             () -> assertTrue(resp.isVerified()),
             () -> assertTrue(resp.isAdmin())
         );

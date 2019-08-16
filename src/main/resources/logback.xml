@@ -36,7 +36,6 @@
             <level>INFO</level>
           </filter>
           <log>elypia-api.log</log>
-          <resourceType>gce_instance</resourceType>
           <flushLevel>WARN</flushLevel>
         </appender>
       </then>

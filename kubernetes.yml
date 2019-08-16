@@ -39,8 +39,8 @@ spec:
   selector:
     app: elypia-api
   ports:
-    - name: http
-      port: 80
+    - name: https
+      port: 443
       targetPort: 8080
       protocol: TCP
 ---
@@ -65,10 +65,10 @@ spec:
             secretName: db-ssl
       containers:
         - name: elypia-api
-          image: us.gcr.io/elypia/elypia-api:1.0.0
+          image: us.gcr.io/elypia/elypia-api:{{CI_COMMIT_TAG}}
           ports:
             - containerPort: 8080
-              name: http
+              name: https
               protocol: TCP
           volumeMounts:
             - mountPath: /home/elypia/config/
@@ -117,7 +117,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /api/articles/recent
-              port: 8080
+              port: 443
             initialDelaySeconds: 15
             timeoutSeconds: 5
             periodSeconds: 15
@@ -125,7 +125,7 @@ spec:
           livenessProbe:
             httpGet:
               path: /api/articles/recent
-              port: 8080
+              port: 443
             initialDelaySeconds: 15
             timeoutSeconds: 5
             periodSeconds: 15

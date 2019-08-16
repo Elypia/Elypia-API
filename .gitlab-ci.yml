@@ -17,8 +17,8 @@ cache:
 
 stages:
   - build-jar
-  - build-docker
   - test
+  - build-docker
   - deploy-docker
   - deploy-k8s
 
@@ -26,7 +26,13 @@ build-jar:
   stage: build-jar
   script: gradle --build-cache --full-stacktrace bootJar
 
-# Build the Dockerfile, this isn't used anywhere, we just want to make sure it still builds.
+test-unit:
+  stage: test
+  script:
+    - gradle --build-cache --full-stacktrace check
+    - cat build/reports/jacoco/test/html/index.html
+
+# Build the Dockerfile, the image is only used when by deploy-docker if deploying.
 build-docker:
   stage: build-docker
   image: docker:19.03.1
@@ -36,12 +42,6 @@ build-docker:
     - docker build -t ${IMAGE_NAME}:latest .
     - mkdir -p images
     - docker save ${IMAGE_NAME} > images/${SERIALIZED_IMAGE}
-
-test:
-  stage: test
-  script:
-    - gradle --build-cache --full-stacktrace check
-    - cat build/reports/jacoco/test/html/index.html
 
 # Deploy our new Docker Image to Google Container Registry (Private)
 deploy-docker:
@@ -70,5 +70,6 @@ deploy-k8s:
   script:
     - gcloud auth activate-service-account --key-file ${GCP_SA_KEY}
     - gcloud container clusters get-credentials ${K8S_CLUSTER} --zone ${GCP_ZONE} --project elypia
+    - sed -i 's/{{CI_COMMIT_TAG}}/'${CI_COMMIT_TAG}'/g' kubernetes.yml
     - kubectl apply -f kubernetes.yml
   cache: {}

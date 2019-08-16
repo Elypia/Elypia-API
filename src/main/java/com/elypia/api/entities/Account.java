@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019  Elypia
+ * Copyright (C) 2019-2019  Elypia
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -39,14 +39,15 @@ public class Account {
     @Column(name = "account_id")
     private int id;
 
-    @Length(min = 5)
     @NotNull
+    @Length(min = 5)
+    @Email
     @Column(name = "email")
     private String email;
 
-    @Length(min = 8, max = 72)
-    @NotNull
     @JsonIgnore
+    @NotNull
+    @Length(min = 8, max = 72)
     @Column(name = "passwd")
     private String hashedPassword;
 
@@ -67,8 +68,12 @@ public class Account {
         this(0, email, password, false, false);
     }
 
-    public Account(String email, String password, boolean isVerified, boolean isAdmin) {
-        this(0, email, password, isVerified, isAdmin);
+    public Account(int id, String email, String password) {
+        this(id, email, password, false);
+    }
+
+    public Account(int id, String email, String password, boolean isVerified) {
+        this(id, email, password, isVerified, false);
     }
 
     public Account(int id, String email, String password, boolean isVerified, boolean isAdmin) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019  Elypia
+ * Copyright (C) 2019-2019  Elypia
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -30,7 +30,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * This this is mocking the database and simulating
@@ -71,12 +71,5 @@ public class AccountMvcTest {
 
         mvc.perform(get("/api/users/exists").param("email", "seth@elypia.com"))
             .andExpect(status().isNoContent());
-    }
-
-    @Test
-    public void teapotNotExist() throws Exception {
-        mvc.perform(get("/api/users/exists").param("email", "seth@teapot.com"))
-            .andExpect(status().isIAmATeapot())
-            .andExpect(content().string("Just tip me over and pour me out!"));
     }
 }

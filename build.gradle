@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019  Elypia
+ * Copyright (C) 2019-2019  Elypia
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -23,7 +23,7 @@ plugins {
     id "io.spring.dependency-management" version "1.0.8.RELEASE"
 }
 
-group = "com.elypia.api"
+group = "com.elypia"
 version = "1.0.0"
 description = "The core API that most of Elypia's services are interfacing with."
 sourceCompatibility = 11
@@ -44,10 +44,10 @@ dependencies {
     runtimeOnly "mysql:mysql-connector-java:8.0.17"
 
     // Logging
-    implementation "org.slf4j:slf4j-api:1.7.26"
+    implementation "org.slf4j:slf4j-api:1.7.28"
     runtimeOnly "org.codehaus.janino:janino:3.0.15"
-    runtimeOnly "com.google.cloud:google-cloud-logging-logback:0.102.0-alpha"
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
+    runtimeOnly "com.google.cloud:google-cloud-logging-logback:0.102.0-alpha"
 
     // Testing
     testImplementation "org.junit.jupiter:junit-jupiter:5.5.1"

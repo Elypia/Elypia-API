@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019  Elypia
+ * Copyright (C) 2019-2019  Elypia
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -36,23 +36,19 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 public class AccountJpaTest {
 
-    private static BCryptPasswordEncoder encoder;
-
     @Autowired
     private TestEntityManager entityManager;
 
     @Autowired
     private AccountRepository userRepo;
 
-    @BeforeAll
-    public static void beforeAll() {
-        encoder = new BCryptPasswordEncoder();
-    }
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     @BeforeEach
     public void beforeEach() {
         entityManager.clear();
-        Account account = new Account("seth@elypia.com", encoder.encode("AaAa123@@"));
+        Account account = new Account(1, "seth@elypia.com", encoder.encode("AaAa123@@"));
         entityManager.persist(account);
         entityManager.flush();
     }
@@ -62,9 +58,10 @@ public class AccountJpaTest {
         Account account = userRepo.findByEmail("seth@elypia.com");
 
         assertAll("Match user correctly",
+            () -> assertEquals(1, account.getId()),
             () -> assertEquals("seth@elypia.com", account.getEmail()),
-            () -> assertNull(account.getPhoneNumber()),
             () -> assertTrue(encoder.matches("AaAa123@@", account.getPassword())),
+            () -> assertNull(account.getPhoneNumber()),
             () -> assertFalse(account.isVerified()),
             () -> assertFalse(account.isAdmin())
         );
