@@ -27,7 +27,6 @@ import java.util.Objects;
 @Service
 public class AccountService {
 
-
     /** Access users via the database. */
     private final AccountRepository accountRepo;
 

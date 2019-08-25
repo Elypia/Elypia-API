@@ -11,9 +11,9 @@ before_script:
 
 cache:
   paths:
-    - .gradle
-    - build
-    - images
+    - .gradle/
+    - build/
+    - images/
 
 stages:
   - build-jar

@@ -45,7 +45,6 @@ dependencies {
 
     // Logging
     implementation "org.slf4j:slf4j-api:1.7.28"
-    runtimeOnly "org.codehaus.janino:janino:3.0.15"
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
     runtimeOnly "com.google.cloud:google-cloud-logging-logback:0.102.0-alpha"
 
