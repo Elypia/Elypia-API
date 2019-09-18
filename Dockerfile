@@ -1,7 +1,7 @@
 # Smallest appropriate image.
 FROM openjdk:11.0.4-jre-slim
 
-LABEL maintainer="seth@elypia.com"
+LABEL maintainer="seth@elypia.org"
 
 # The Docker container will always default to prod.
 ENV SPRING_PROFILES_ACTIVE=prod
