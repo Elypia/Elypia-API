@@ -1,11 +1,11 @@
 /*
+ * Elypia API - Backend for Elypia website and core services.
  * Copyright (C) 2019-2019  Elypia CIC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
  * published by the Free Software Foundation, either version 3 of the
  * License, or (at your option) any later version.
- *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -19,7 +19,7 @@ plugins {
     id "java"
     id "idea"
     id "jacoco"
-    id "org.springframework.boot" version "2.1.6.RELEASE"
+    id "org.springframework.boot" version "2.1.8.RELEASE"
     id "io.spring.dependency-management" version "1.0.8.RELEASE"
 }
 
@@ -29,29 +29,33 @@ description = "The core API that most of Elypia's services are interfacing with.
 sourceCompatibility = 11
 targetCompatibility = 11
 
+ext {
+    springVersion = "2.1.8.RELEASE"
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
     // Spring
-    implementation "org.springframework.boot:spring-boot-starter-web:2.1.6.RELEASE"
-    implementation "org.springframework.boot:spring-boot-starter-security:2.1.6.RELEASE"
-    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:2.1.6.RELEASE"
+    implementation "org.springframework.boot:spring-boot-starter-web:${springVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-security:${springVersion}"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${springVersion}"
 
     // Database
-    implementation "org.springframework.boot:spring-boot-starter-data-jpa:2.1.6.RELEASE"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springVersion}"
     runtimeOnly "mysql:mysql-connector-java:8.0.17"
 
     // Logging
     implementation "org.slf4j:slf4j-api:1.7.28"
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
-    runtimeOnly "com.google.cloud:google-cloud-logging-logback:0.102.0-alpha"
+    runtimeOnly "com.google.cloud:google-cloud-logging-logback:0.111.0-alpha"
 
     // Testing
-    testImplementation "org.junit.jupiter:junit-jupiter:5.5.1"
-    testImplementation "org.springframework.boot:spring-boot-starter-test:2.1.6.RELEASE"
-    testImplementation "org.springframework.security:spring-security-test:5.1.5.RELEASE"
+    testImplementation "org.junit.jupiter:junit-jupiter:5.5.2"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springVersion}"
+    testImplementation "org.springframework.security:spring-security-test:5.1.6.RELEASE"
     testRuntimeOnly "com.h2database:h2:1.4.199"
 }
 

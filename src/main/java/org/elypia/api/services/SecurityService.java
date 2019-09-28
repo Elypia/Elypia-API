@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2019  Elypia CIC
+ * Elypia API - Backend for Elypia website and core services.
+ * Copyright (C) 2019-2019  Elypia CIC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -23,6 +24,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author seth@elypia.org (Syed Shah)
+ */
 @Service
 public class SecurityService {
 

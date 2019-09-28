@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2019  Elypia CIC
+ * Elypia API - Backend for Elypia website and core services.
+ * Copyright (C) 2019-2019  Elypia CIC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -21,6 +22,9 @@ import org.springframework.data.domain.*;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author seth@elypia.org (Syed Shah)
+ */
 @Repository
 public interface CommentRepository extends PagingAndSortingRepository<Comment, Integer> {
 

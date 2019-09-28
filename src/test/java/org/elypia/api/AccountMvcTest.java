@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2019  Elypia CIC
+ * Elypia API - Backend for Elypia website and core services.
+ * Copyright (C) 2019-2019  Elypia CIC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -37,6 +38,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * HTTP requests in order to ensure we're getting the response statuses
  * and body we're expecting with the given scenarios as well as aid
  * in documentation generated.
+ *
+ * @author seth@elypia.org (Syed Shah)
  */
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(UserController.class)

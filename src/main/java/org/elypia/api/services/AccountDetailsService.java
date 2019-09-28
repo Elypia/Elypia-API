@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2019  Elypia CIC
+ * Elypia API - Backend for Elypia website and core services.
+ * Copyright (C) 2019-2019  Elypia CIC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -29,6 +30,8 @@ import java.util.List;
  * Our implementation of {@link UserDetailsService}.
  * Despite the name, this is for authenticating to an Elypia {@link Account},
  * not an Elypia user.
+ *
+ * @author seth@elypia.org (Syed Shah)
  */
 @Service
 public class AccountDetailsService implements UserDetailsService {

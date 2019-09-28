@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2019  Elypia CIC
+ * Elypia API - Backend for Elypia website and core services.
+ * Copyright (C) 2019-2019  Elypia CIC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -31,6 +32,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * This is only testing the code in relation to the database
  * and the entities coming in and out of it though an
  * in-memory (embedded) database.
+ *
+ * @author seth@elypia.org (Syed Shah)
  */
 @ExtendWith(SpringExtension.class)
 @DataJpaTest

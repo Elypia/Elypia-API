@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2019  Elypia CIC
+ * Elypia API - Backend for Elypia website and core services.
+ * Copyright (C) 2019-2019  Elypia CIC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -22,6 +23,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.validation.*;
 import java.lang.annotation.*;
 
+/**
+ * @author seth@elypia.org (Syed Shah)
+ */
 @Documented
 @Constraint(validatedBy = EmailNotTaken.Validator.class)
 @Target({ ElementType.FIELD})

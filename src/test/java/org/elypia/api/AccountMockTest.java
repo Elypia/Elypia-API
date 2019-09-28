@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2019  Elypia CIC
+ * Elypia API - Backend for Elypia website and core services.
+ * Copyright (C) 2019-2019  Elypia CIC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -33,6 +34,8 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Instead of using an in-memory database we just fake database
  * responses and use the fake responses to test our controller methods.
+ *
+ * @author seth@elypia.org (Syed Shah)
  */
 @ExtendWith(SpringExtension.class)
 @SpringBootTest

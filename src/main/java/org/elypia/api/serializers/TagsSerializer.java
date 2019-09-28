@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2019  Elypia CIC
+ * Elypia API - Backend for Elypia website and core services.
+ * Copyright (C) 2019-2019  Elypia CIC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -27,6 +28,8 @@ import java.util.List;
 /**
  * Serialize {@link ArticleTag} objects so than after JSON serialization
  * they are just a flat list of names rather than objects.
+ *
+ * @author seth@elypia.org (Syed Shah)
  */
 public class TagsSerializer extends StdSerializer<List<ArticleTag>> {
 

@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2019  Elypia CIC
+ * Elypia API - Backend for Elypia website and core services.
+ * Copyright (C) 2019-2019  Elypia CIC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -23,6 +24,8 @@ import javax.validation.constraints.NotEmpty;
 
 /**
  * Specify a new password for an account.
+ *
+ * @author seth@elypia.org (Syed Shah)
  */
 @VerifyPassword
 public abstract class PasswordForm {

@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2019  Elypia CIC
+ * Elypia API - Backend for Elypia website and core services.
+ * Copyright (C) 2019-2019  Elypia CIC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -18,6 +19,9 @@ package org.elypia.api.entities;
 
 import javax.persistence.*;
 
+/**
+ * @author seth@elypia.org (Syed Shah)
+ */
 @Entity(name = "upvotes")
 @Table
 public class Upvote {
