@@ -14,3 +14,6 @@ google:
     enabled: true
     site-key: ${RECAPTCHA_SITE_KEY}
     secret-key: ${RECAPTCHA_SECRET_KEY}
+stripe:
+  secret-key: ${STRIPE_SECRET_KEY}
+  publishable-key: ${STRIPE_PUBLIC_KEY}

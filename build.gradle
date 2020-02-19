@@ -1,27 +1,24 @@
 /*
- * Elypia API - Backend for Elypia website and core services.
- * Copyright (C) 2019-2019  Elypia CIC
+ * Copyright 2019-2020 Elypia CIC
+ * Licensed under the Apache License, Version 2.0 (the "License");
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 plugins {
     id "java"
     id "idea"
     id "jacoco"
-    id "org.springframework.boot" version "2.1.8.RELEASE"
-    id "io.spring.dependency-management" version "1.0.8.RELEASE"
+    id "org.springframework.boot" version "2.2.4.RELEASE"
+    id "io.spring.dependency-management" version "1.0.9.RELEASE"
 }
 
 group = "org.elypia"
@@ -31,7 +28,7 @@ sourceCompatibility = 11
 targetCompatibility = 11
 
 ext {
-    springVersion = "2.1.8.RELEASE"
+    springVersion = "2.2.4.RELEASE"
 }
 
 repositories {
@@ -46,18 +43,21 @@ dependencies {
 
     // Database
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springVersion}"
-    runtimeOnly "mysql:mysql-connector-java:8.0.17"
+    runtimeOnly "mysql:mysql-connector-java:8.0.19"
+
+    // Stripe
+    implementation "com.stripe:stripe-java:17.11.0"
 
     // Logging
-    implementation "org.slf4j:slf4j-api:1.7.28"
+    implementation "org.slf4j:slf4j-api:1.7.30"
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
-    runtimeOnly "com.google.cloud:google-cloud-logging-logback:0.111.0-alpha"
+    runtimeOnly "com.google.cloud:google-cloud-logging-logback:0.116.0-alpha"
 
     // Testing
-    testImplementation "org.junit.jupiter:junit-jupiter:5.5.2"
+    testImplementation "org.junit.jupiter:junit-jupiter:5.6.0"
     testImplementation "org.springframework.boot:spring-boot-starter-test:${springVersion}"
-    testImplementation "org.springframework.security:spring-security-test:5.1.6.RELEASE"
-    testRuntimeOnly "com.h2database:h2:1.4.199"
+    testImplementation "org.springframework.security:spring-security-test:5.2.2.RELEASE"
+    testRuntimeOnly "com.h2database:h2:1.4.200"
 }
 
 [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
@@ -81,7 +81,7 @@ test {
 }
 
 jacoco {
-    toolVersion = "0.8.4"
+    toolVersion = "0.8.5"
 }
 
 jacocoTestReport {

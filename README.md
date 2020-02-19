@@ -1,21 +1,21 @@
-# Elypia API [![Discord][discord-members]][discord] [![Internationalization][i18n-badge]][i18n] [![GitLab Build][gitlab-build]][gitlab] [![GitLab Coverage][gitlab-coverage]][gitlab]
+# Elypia API [![matrix-members]][matrix] [![discord-members]][discord] [![i18n-badge]][i18n] [![gitlab-build]][gitlab] [![gitlab-coverage]][gitlab] [![donate-shield]][elypia-donate]
 ## About
-API for [Elypia][elypia], this is the core API that most of our services are interfacing with in order
+API for [Elypia], this is the core API that most of our services are interfacing with in order
 to get data to display such as news, authentication, or users. 
 
 ## Requirements
 * Java 11
-* [MySQL 5.7][mysql]
+* [MySQL 5.7]
 
 ## Running
 Please visit the Wiki for extra information regarding setup!
 
-### Running in Production with [Docker][docker]
-When running the backend in production you should build the project and use the [Dockerfile][dockerfile]
+### Running in Production with [Docker]
+When running the backend in production you should build the project and use the [Dockerfile]
 to build the image in order to deploy it, the image can use an external `application-{}.yml` files
 however it defaults to using the internal `application-prod.yml` file in the classpath which
 externalizes the main configurable properties the Elypia API cares about to environment variables.  
-> Get more information on Spring configuration profiles [here][spring-profiles].
+> Get more information on Spring configuration profiles [here].
 
 #### Environment Variables
 | Environment Variable             | Default   | Description                                                           |
@@ -31,7 +31,7 @@ externalizes the main configurable properties the Elypia API cares about to envi
 | DATABASE_PASSWORD                |           | Password for the authenticating user.                                 |
 | RECAPTCHA_SITE_KEY               |           | Site key to make requests to the Google Recaptcha API.                |
 | RECAPTCHA_SECRET_KEY             |           | Secret key to make requests to the Google Recaptcha API.              |
-> Further configuration can be performed by looking at the Spring [documentation][spring-config]
+> Further configuration can be performed by looking at the Spring [documentation]
 > including setting the `SPRING_PROFILES_ACTIVE` variable to change the profile from `prod`.
 
 ### Running in Development
@@ -53,22 +53,27 @@ The following settings are recommeneded to be set to simulate the production env
 | google.recaptcha.secret-key |          |
 
 ## Open-Source
-This is open-source under the [GNU Affero General Public License][agpl]!  
-While not legal advice, you can find a [TL;DR][agpl-tldr] that sums up what
+This is open-source under the [Apache 2.0]!  
+While not legal advice, you can find a [TL;DR] that sums up what
 you can and can't do and any requirements if you want to use or derive work from this project!  
 
+[matrix]: https://matrix.to/#/+elypia:matrix.org "Matrix Invite"
 [discord]: https://discord.gg/hprGMaM "Discord Invite"
-[discord-members]: https://discordapp.com/api/guilds/184657525990359041/widget.png "Discord Shield"
-[i18n]: https://i18n.elypia.org/engage/elypia-backend/?utm "Weblate Translations"
-[i18n-badge]: https://i18n.elypia.org/widgets/elypia-backend/-/svg-badge.svg "Weblate Translation Badge"
+[i18n]: https://i18n.elypia.org/engage/elypia-api/?utm "Weblate Translations"
 [gitlab]: https://gitlab.com/Elypia/elypia-api/commits/master "Repository on GitLab"
+[elypia-donate]: https://elypia.org/donate "Donate to Elypia"
+[Elypia]: https://elypia.org/ "Elypia Homepage"
+[MySQL 5.7]: https://www.mysql.com "MySQL Database Server"
+[documentation]: https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html "Spring Externalized Configuration"
+[here]: https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html "Spring Configuration Profiles"
+[Docker]: https://www.docker.com "Docker"
+[Dockerfile]: https://docs.docker.com/engine/reference/builder/ "Dockerfile Reference"
+[Apache 2.0]: https://www.apache.org/licenses/LICENSE-2.0 "Apache 2.0 License"
+[TL;DR]: https://tldrlegal.com/license/apache-license-2.0-(apache-2.0) "TL;DR of Apache 2.0"
+
+[matrix-members]: https://img.shields.io/matrix/elypia-general:matrix.org?logo=matrix "Matrix Shield"
+[discord-members]: https://discordapp.com/api/guilds/184657525990359041/widget.png "Discord Shield"
+[i18n-badge]: https://i18n.elypia.org/widgets/elypia-api/-/svg-badge.svg "Weblate Translation Badge"
 [gitlab-build]: https://gitlab.com/Elypia/elypia-api/badges/master/pipeline.svg "GitLab Build Shield"
 [gitlab-coverage]: https://gitlab.com/Elypia/elypia-api/badges/master/coverage.svg "GitLab Coverage Shield"
-[elypia]: https://elypia.org/ "Elypia Homepage"
-[mysql]: https://www.mysql.com "MySQL Database Server"
-[spring-config]: https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html "Spring Externalized Configuration"
-[spring-profiles]: https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html "Spring Configuration Profiles"
-[docker]: https://www.docker.com "Docker"
-[dockerfile]: https://docs.docker.com/engine/reference/builder/ "Dockerfile Reference"
-[agpl]: https://www.gnu.org/licenses/agpl-3.0.en.html "AGPL"
-[agpl-tldr]: https://tldrlegal.com/license/gnu-affero-general-public-license-v3-(agpl-3.0) "TLDR of AGPL"
+[donate-shield]: https://img.shields.io/badge/Elypia-Donate-blueviolet "Donate Shield"
