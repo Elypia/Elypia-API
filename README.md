@@ -1,4 +1,4 @@
-# Elypia API [![matrix-members]][matrix] [![discord-members]][discord] [![i18n-badge]][i18n] [![gitlab-build]][gitlab] [![gitlab-coverage]][gitlab] [![donate-shield]][elypia-donate]
+# Elypia API [![Matrix]][matrix-community] [![Discord]][discord-guild] [![i18n]][i18n-badge] [![Build]][gitlab] [![Coverage]][gitlab] [![Donate]][elypia-donate]
 ## About
 API for [Elypia], this is the core API that most of our services are interfacing with in order
 to get data to display such as news, authentication, or users. 
@@ -57,9 +57,9 @@ This is open-source under the [Apache 2.0]!
 While not legal advice, you can find a [TL;DR] that sums up what
 you can and can't do and any requirements if you want to use or derive work from this project!  
 
-[matrix]: https://matrix.to/#/+elypia:matrix.org "Matrix Invite"
-[discord]: https://discord.gg/hprGMaM "Discord Invite"
-[i18n]: https://i18n.elypia.org/engage/elypia-api/?utm "Weblate Translations"
+[matrix-community]: https://matrix.to/#/+elypia:matrix.org "Matrix Invite"
+[discord-guild]: https://discord.gg/hprGMaM "Discord Invite"
+[i18n-badge]: https://i18n.elypia.org/engage/elypia-api/?utm "Weblate Translations"
 [gitlab]: https://gitlab.com/Elypia/elypia-api/commits/master "Repository on GitLab"
 [elypia-donate]: https://elypia.org/donate "Donate to Elypia"
 [Elypia]: https://elypia.org/ "Elypia Homepage"
@@ -71,9 +71,9 @@ you can and can't do and any requirements if you want to use or derive work from
 [Apache 2.0]: https://www.apache.org/licenses/LICENSE-2.0 "Apache 2.0 License"
 [TL;DR]: https://tldrlegal.com/license/apache-license-2.0-(apache-2.0) "TL;DR of Apache 2.0"
 
-[matrix-members]: https://img.shields.io/matrix/elypia-general:matrix.org?logo=matrix "Matrix Shield"
-[discord-members]: https://discordapp.com/api/guilds/184657525990359041/widget.png "Discord Shield"
-[i18n-badge]: https://i18n.elypia.org/widgets/elypia-api/-/svg-badge.svg "Weblate Translation Badge"
-[gitlab-build]: https://gitlab.com/Elypia/elypia-api/badges/master/pipeline.svg "GitLab Build Shield"
-[gitlab-coverage]: https://gitlab.com/Elypia/elypia-api/badges/master/coverage.svg "GitLab Coverage Shield"
-[donate-shield]: https://img.shields.io/badge/Elypia-Donate-blueviolet "Donate Shield"
+[Matrix]: https://img.shields.io/matrix/elypia-general:matrix.org?logo=matrix "Matrix Shield"
+[Discord]: https://discordapp.com/api/guilds/184657525990359041/widget.png "Discord Shield"
+[i18n]: https://i18n.elypia.org/widgets/elypia-api/-/svg-badge.svg "Weblate Translation Badge"
+[Build]: https://gitlab.com/Elypia/elypia-api/badges/master/pipeline.svg "GitLab Build Shield"
+[Coverage]: https://gitlab.com/Elypia/elypia-api/badges/master/coverage.svg "GitLab Coverage Shield"
+[Donate]: https://img.shields.io/badge/Elypia-Donate-blueviolet "Donate Shield"
