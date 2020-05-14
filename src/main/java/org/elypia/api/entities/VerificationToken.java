@@ -22,8 +22,8 @@ import java.util.Date;
 /**
  * @author seth@elypia.org (Syed Shah)
  */
-@Entity(name = "verification")
-@Table
+@Entity
+@Table(name = "verification")
 public class VerificationToken {
 
     @Id

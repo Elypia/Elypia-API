@@ -22,8 +22,8 @@ import java.util.List;
 /**
  * @author seth@elypia.org (Syed Shah)
  */
-@Entity(name = "accounts")
-@Table
+@Entity
+@Table(name = "accounts")
 public class User {
 
     @Id

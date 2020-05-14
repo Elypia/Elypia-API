@@ -21,8 +21,8 @@ import javax.persistence.*;
 /**
  * @author seth@elypia.org (Syed Shah)
  */
-@Entity(name = "upvotes")
-@Table
+@Entity
+@Table(name = "upvotes")
 public class Upvote {
 
     @Id

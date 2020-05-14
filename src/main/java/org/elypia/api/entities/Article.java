@@ -26,8 +26,8 @@ import java.util.*;
 /**
  * @author seth@elypia.org (Syed Shah)
  */
-@Entity(name = "articles")
-@Table
+@Entity
+@Table(name = "articles")
 public class Article {
 
     @Id

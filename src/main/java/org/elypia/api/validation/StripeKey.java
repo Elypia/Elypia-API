@@ -39,7 +39,7 @@ public @interface StripeKey {
     /**
      * @return the error message template
      */
-    String message() default "{com.elypia.payment.validator.StripeKey.message}";
+    String message() default "{org.elypia.api.validation.StripeKey.message}";
 
     /**
      * @return the groups the constraint belongs to

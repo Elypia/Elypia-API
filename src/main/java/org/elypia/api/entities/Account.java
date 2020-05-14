@@ -31,8 +31,8 @@ import javax.validation.constraints.*;
  *
  * @author seth@elypia.org (Syed Shah)
  */
-@Entity(name = "accounts")
-@Table
+@Entity
+@Table(name = "accounts")
 public class Account {
 
     @Min(1)

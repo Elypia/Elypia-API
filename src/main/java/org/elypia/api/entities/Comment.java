@@ -23,8 +23,8 @@ import java.util.Date;
 /**
  * @author seth@elypia.org (Syed Shah)
  */
-@Entity(name = "comments")
-@Table
+@Entity
+@Table(name = "comments")
 public class Comment {
 
     @Id

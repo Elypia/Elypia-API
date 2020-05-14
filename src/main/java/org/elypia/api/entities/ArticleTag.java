@@ -23,8 +23,8 @@ import javax.persistence.*;
 /**
  * @author seth@elypia.org (Syed Shah)
  */
-@Entity(name = "tags")
-@Table
+@Entity
+@Table(name = "tags")
 public class ArticleTag {
 
     @Id

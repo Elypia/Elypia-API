@@ -22,8 +22,8 @@ import java.util.Date;
 /**
  * @author seth@elypia.org (Syed Shah)
  */
-@Entity(name = "usernames")
-@Table
+@Entity
+@Table(name = "usernames")
 public class Username {
 
     @Id
