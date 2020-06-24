@@ -19,7 +19,7 @@ package org.elypia.api.controllers;
 import com.stripe.exception.StripeException;
 import com.stripe.model.*;
 import org.elypia.api.forms.ChargeForm;
-import org.elypia.api.services.StripeService;
+import org.elypia.api.services.stripe.StripeService;
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -14,39 +14,42 @@
  * limitations under the License.
  */
 
-package org.elypia.api.serializers;
+package org.elypia.api.services.gitlab;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import org.elypia.api.persistence.entities.ArticleTag;
+import org.gitlab4j.api.models.Group;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
- * Serialize {@link ArticleTag} objects so than after JSON serialization
- * they are just a flat list of names rather than objects.
- *
- * @author seth@elypia.org (Syed Shah)
+ * @author seth@elypia.org (Seth Falco)
+ * @since 1.0.0
  */
-public class TagsSerializer extends StdSerializer<List<ArticleTag>> {
+public class GitLabGroupSerializer extends StdSerializer<Group> {
 
-    public TagsSerializer() {
-        this(null);
+    public GitLabGroupSerializer() {
+        super(Group.class);
     }
 
-    protected TagsSerializer(Class<List<ArticleTag>> t) {
-        super(t);
-    }
-
+    /**
+     * @param group
+     * @param gen
+     * @param serializers
+     */
     @Override
-    public void serialize(List<ArticleTag> value, JsonGenerator gen, SerializerProvider provider) throws IOException {
-        gen.writeStartArray();
+    public void serialize(Group group, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+        gen.writeStartObject();
+        gen.writeNumberField("id", group.getId());
+        gen.writeStringField("name", group.getName());
+        gen.writeStringField("url", group.getWebUrl());
+        gen.writeStringField("fullPath", group.getFullPath());
 
-        for (ArticleTag articleTag : value)
-            gen.writeString(articleTag.getTag());
-
+        gen.writeArrayFieldStart("projects");
+        gen.writeObject(group.getProjects());
         gen.writeEndArray();
+
+        gen.writeEndObject();
     }
 }

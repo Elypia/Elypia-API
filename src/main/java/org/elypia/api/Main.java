@@ -16,9 +16,17 @@
 
 package org.elypia.api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import org.elypia.api.services.companieshouse.CompaniesHouseConfig;
+import org.elypia.api.services.gitlab.*;
+import org.elypia.api.services.recaptcha.ReCaptchaConfig;
+import org.elypia.api.services.stripe.StripeConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import javax.validation.Validator;
@@ -26,6 +34,13 @@ import javax.validation.Validator;
 /**
  * @author seth@elypia.org (Syed Shah)
  */
+@EnableConfigurationProperties({
+    CompaniesHouseConfig.class,
+    GitLabConfig.class,
+    ReCaptchaConfig.class,
+    StripeConfig.class,
+})
+@EnableAsync
 @SpringBootApplication
 public class Main {
 
@@ -36,5 +51,15 @@ public class Main {
     @Bean
     public Validator getLocalValidatorFactoryBean() {
         return new LocalValidatorFactoryBean();
+    }
+
+    @Bean
+    public ObjectMapper getObjectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        SimpleModule module = new SimpleModule();
+        module.addSerializer(new GitLabGroupSerializer());
+        module.addSerializer(new GitLabProjectSerializer());
+        mapper.registerModule(module);
+        return mapper;
     }
 }

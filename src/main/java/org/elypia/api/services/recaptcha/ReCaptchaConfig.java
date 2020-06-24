@@ -14,21 +14,35 @@
  * limitations under the License.
  */
 
-package org.elypia.api.configuration;
+package org.elypia.api.services.recaptcha;
 
-import org.elypia.api.validation.StripeKey;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.validation.annotation.Validated;
 
-@Validated
-@ConfigurationProperties(prefix = "stripe")
-public class StripeConfiguration {
+/**
+ * @author seth@elypia.org (Syed Shah)
+ */
+@ConfigurationProperties(prefix = "google.recaptcha")
+public class ReCaptchaConfig {
 
-    @StripeKey(type = StripeKey.Type.SECRET)
+    private boolean enabled;
+    private String siteKey;
     private String secretKey;
 
-    @StripeKey(type = StripeKey.Type.PUBLISHABLE)
-    private String publishableKey;
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getSiteKey() {
+        return siteKey;
+    }
+
+    public void setSiteKey(String siteKey) {
+        this.siteKey = siteKey;
+    }
 
     public String getSecretKey() {
         return secretKey;
@@ -36,13 +50,5 @@ public class StripeConfiguration {
 
     public void setSecretKey(String secretKey) {
         this.secretKey = secretKey;
-    }
-
-    public String getPublishableKey() {
-        return publishableKey;
-    }
-
-    public void setPublishableKey(String publishableKey) {
-        this.publishableKey = publishableKey;
     }
 }

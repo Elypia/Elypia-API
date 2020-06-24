@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.elypia.api.repositories;
+package org.elypia.api.persistence.repositories;
 
-import org.elypia.api.entities.Comment;
+import org.elypia.api.persistence.entities.Comment;
 import org.springframework.data.domain.*;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;

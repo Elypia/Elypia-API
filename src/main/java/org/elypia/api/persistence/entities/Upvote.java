@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-package org.elypia.api.entities;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package org.elypia.api.persistence.entities;
 
 import javax.persistence.*;
 
@@ -24,29 +22,19 @@ import javax.persistence.*;
  * @author seth@elypia.org (Syed Shah)
  */
 @Entity
-@Table(name = "tags")
-public class ArticleTag {
+@Table(name = "upvotes")
+public class Upvote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tag_id")
+    @Column(name = "upvote_id")
     private int id;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "article_id")
-    private Article article;
+    @Column(name = "comment_id")
+    private int commentId;
 
-    @Column(name = "tag")
-    private String tag;
-
-    public ArticleTag() {
-        // Do nothing
-    }
-
-    public ArticleTag(String tag) {
-        this.tag = tag;
-    }
+    @Column(name = "user_id")
+    private int userId;
 
     public int getId() {
         return id;
@@ -56,19 +44,19 @@ public class ArticleTag {
         this.id = id;
     }
 
-    public Article getArticle() {
-        return article;
+    public int getCommentId() {
+        return commentId;
     }
 
-    public void setArticle(Article article) {
-        this.article = article;
+    public void setCommentId(int commentId) {
+        this.commentId = commentId;
     }
 
-    public String getTag() {
-        return tag;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

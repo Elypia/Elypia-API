@@ -14,23 +14,22 @@
  * limitations under the License.
  */
 
-package org.elypia.api.services;
+package org.elypia.api.services.stripe;
 
 import com.stripe.Stripe;
-import org.elypia.api.configuration.StripeConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StripeService {
 
-    private StripeConfiguration config;
+    private StripeConfig config;
 
     private final String secretKey;
     private final String publishableKey;
 
     @Autowired
-    public StripeService(StripeConfiguration config) {
+    public StripeService(StripeConfig config) {
         this.config = config;
 
         secretKey = config.getSecretKey();
@@ -39,7 +38,7 @@ public class StripeService {
         Stripe.apiKey = secretKey;
     }
 
-    public StripeConfiguration getConfig() {
+    public StripeConfig getConfig() {
         return config;
     }
 

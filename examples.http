@@ -9,3 +9,15 @@ GET http://localhost:8080/api/articles/recent
 Accept: application/json
 
 ###
+
+# Get the users group on GitLab.
+GET http://localhost:8081/api/gitlab/group
+Accept: application/json
+
+###
+
+# Get of all of the GitLab users groups projects.
+GET http://localhost:8081/api/gitlab/projects
+Accept: application/json
+
+###

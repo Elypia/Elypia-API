@@ -20,13 +20,7 @@ externalizes the main configurable properties the Elypia API cares about to envi
 #### Environment Variables
 | Environment Variable             | Default   | Description                                                           |
 |----------------------------------|-----------|-----------------------------------------------------------------------|
-| DATABASE_IP                      | 127.0.0.1 | Host that runs an MySQL instance.                                     |
-| DATABASE_PORT                    | 3306      | Port the server is running on.                                        |
-| DATABASE_NAME                    | elypia    | Name of the database to connect to.                                   |
-| DATABASE_TRUST_KEYSTORE          |           | Keystore with certificate for MySQL instance to authenticate against. |
-| DATABASE_TRUST_KEYSTORE_PASSWORD |           | The password for this trust certificate keystore.                     |
-| DATABASE_CLIENT_KEYSTORE         |           | Keystore with key to authenticate this application to the MySQL.      |
-| DATABASE_CLIENT_PASSWORD         |           | Password for this client certificate keystore.                        |
+| DATABASE_URL                     | 127.0.0.1 | Host that runs an MySQL instance.                                     |
 | DATABASE_USERNAME                | elypia    | Database user to authenticate as.                                     |
 | DATABASE_PASSWORD                |           | Password for the authenticating user.                                 |
 | RECAPTCHA_SITE_KEY               |           | Site key to make requests to the Google Recaptcha API.                |
@@ -71,9 +65,9 @@ you can and can't do and any requirements if you want to use or derive work from
 [Apache 2.0]: https://www.apache.org/licenses/LICENSE-2.0 "Apache 2.0 License"
 [TL;DR]: https://tldrlegal.com/license/apache-license-2.0-(apache-2.0) "TL;DR of Apache 2.0"
 
-[Matrix]: https://img.shields.io/matrix/elypia-general:matrix.org?logo=matrix "Matrix Shield"
-[Discord]: https://discordapp.com/api/guilds/184657525990359041/widget.png "Discord Shield"
+[Matrix]: https://img.shields.io/matrix/elypia:matrix.org?logo=matrix "Matrix Shield"
+[Discord]: https://discord.com/api/guilds/184657525990359041/widget.png "Discord Shield"
 [i18n]: https://i18n.elypia.org/widgets/elypia-api/-/svg-badge.svg "Weblate Translation Badge"
 [Build]: https://gitlab.com/Elypia/elypia-api/badges/master/pipeline.svg "GitLab Build Shield"
 [Coverage]: https://gitlab.com/Elypia/elypia-api/badges/master/coverage.svg "GitLab Coverage Shield"
-[Donate]: https://img.shields.io/badge/Elypia-Donate-blueviolet "Donate Shield"
+[Donate]: https://img.shields.io/badge/elypia-donate-blueviolet "Donate Shield"

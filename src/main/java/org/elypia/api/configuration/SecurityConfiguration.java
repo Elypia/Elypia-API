@@ -36,8 +36,9 @@ import java.util.List;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final List<String> CORS = List.of(
-        "https://elypia.org", "https://elypia.com", // Live Website
+        "https://elypia.org", "https://elypia.com", "https://elypia.space", "https://elypia.art", // Live Website
         "https://localhost:4200", "http://localhost:4200", // Angular Development
+        "https://localhost:4201", "http://localhost:4201", // Angular Development Alternative
         "https://localhost:3000", "http://localhost:3000" // Angular Light Webserver
     );
 

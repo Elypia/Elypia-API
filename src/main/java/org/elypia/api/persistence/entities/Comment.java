@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.elypia.api.entities;
+package org.elypia.api.persistence.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

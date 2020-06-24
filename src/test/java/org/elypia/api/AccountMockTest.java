@@ -17,8 +17,8 @@
 package org.elypia.api;
 
 import org.elypia.api.controllers.UserController;
-import org.elypia.api.entities.Account;
-import org.elypia.api.repositories.AccountRepository;
+import org.elypia.api.persistence.entities.Account;
+import org.elypia.api.persistence.repositories.AccountRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;

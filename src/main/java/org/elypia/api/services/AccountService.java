@@ -16,8 +16,8 @@
 
 package org.elypia.api.services;
 
-import org.elypia.api.entities.*;
-import org.elypia.api.repositories.*;
+import org.elypia.api.persistence.entities.*;
+import org.elypia.api.persistence.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

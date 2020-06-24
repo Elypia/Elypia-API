@@ -16,9 +16,9 @@
 
 package org.elypia.api.controllers;
 
-import org.elypia.api.entities.Comment;
 import org.elypia.api.forms.CommentForm;
-import org.elypia.api.repositories.CommentRepository;
+import org.elypia.api.persistence.entities.Comment;
+import org.elypia.api.persistence.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Slice;
 import org.springframework.web.bind.annotation.*;

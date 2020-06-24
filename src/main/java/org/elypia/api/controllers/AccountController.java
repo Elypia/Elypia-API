@@ -16,9 +16,9 @@
 
 package org.elypia.api.controllers;
 
-import org.elypia.api.entities.*;
 import org.elypia.api.forms.*;
-import org.elypia.api.repositories.*;
+import org.elypia.api.persistence.entities.*;
+import org.elypia.api.persistence.repositories.*;
 import org.elypia.api.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;

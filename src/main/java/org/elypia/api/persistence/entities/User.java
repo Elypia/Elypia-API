@@ -14,32 +14,33 @@
  * limitations under the License.
  */
 
-package org.elypia.api.entities;
+package org.elypia.api.persistence.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.List;
 
 /**
  * @author seth@elypia.org (Syed Shah)
  */
 @Entity
-@Table(name = "verification")
-public class VerificationToken {
+@Table(name = "accounts")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "token_id")
+    @Column(name = "user_id")
     private int id;
 
-    @OneToOne()
-    @JoinColumn(name = "account_id")
-    private Account account;
+    @Column(name = "account_id")
+    private int accountId;
 
-    @Column(name = "token")
-    private String token;
+    @OneToMany
+    @Column(name = "username")
+    private List<Username> usernames;
 
-    @Column(name = "expiry")
-    private Date expiry;
+    public User() {
+        // Do nothing
+    }
 
     public int getId() {
         return id;
@@ -49,27 +50,19 @@ public class VerificationToken {
         this.id = id;
     }
 
-    public Account getAccount() {
-        return account;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
-    public String getToken() {
-        return token;
+    public List<Username> getUsernames() {
+        return usernames;
     }
 
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public Date getExpiry() {
-        return expiry;
-    }
-
-    public void setExpiry(Date expiry) {
-        this.expiry = expiry;
+    public void setUsername(List<Username> usernames) {
+        this.usernames = usernames;
     }
 }

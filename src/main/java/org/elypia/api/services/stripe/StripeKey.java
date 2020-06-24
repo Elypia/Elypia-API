@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.elypia.api.validation;
+package org.elypia.api.services.stripe;
 
 import javax.validation.*;
 import javax.validation.constraints.*;
@@ -27,19 +27,19 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Constraint(validatedBy = {})
 @NotNull
-@Size(min = 32, max = 32)
-@Pattern(regexp = "^[sp]k_(?:live|test)_[A-Za-z\\d]{24}$")
+@Size(min = 32)
+@Pattern(regexp = "^[sp]k_(?:live|test)_[A-Za-z\\d]{24,}$")
 public @interface StripeKey {
 
     /**
      * @return The type of StripeKey this is.
      */
-    Type type();
+    StripeKeyType type();
 
     /**
      * @return the error message template
      */
-    String message() default "{org.elypia.api.validation.StripeKey.message}";
+    String message() default "{org.elypia.api.services.stripe.StripeKey.message}";
 
     /**
      * @return the groups the constraint belongs to
@@ -53,7 +53,7 @@ public @interface StripeKey {
 
     class Validator implements ConstraintValidator<StripeKey, String> {
 
-        private Type type;
+        private StripeKeyType type;
 
         @Override
         public void initialize(StripeKey constraintAnnotation) {
@@ -62,12 +62,7 @@ public @interface StripeKey {
 
         @Override
         public boolean isValid(String value, ConstraintValidatorContext context) {
-            return value.startsWith("s") == (type == Type.SECRET);
+            return value.startsWith("s") == (type == StripeKeyType.SECRET);
         }
-    }
-
-    enum Type {
-        SECRET,
-        PUBLISHABLE
     }
 }

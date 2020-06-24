@@ -16,8 +16,8 @@
 
 package org.elypia.api.services;
 
-import org.elypia.api.entities.Account;
-import org.elypia.api.repositories.AccountRepository;
+import org.elypia.api.persistence.entities.Account;
+import org.elypia.api.persistence.repositories.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;

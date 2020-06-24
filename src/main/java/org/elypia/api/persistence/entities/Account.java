@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.elypia.api.entities;
+package org.elypia.api.persistence.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Length;
@@ -49,8 +49,8 @@ public class Account {
 
     @JsonIgnore
     @NotNull
-    @Length(min = 8, max = 72)
-    @Column(name = "passwd")
+    @Length(min = 12, max = 72)
+    @Column(name = "password")
     private String hashedPassword;
 
     @Column(name = "phone_number")

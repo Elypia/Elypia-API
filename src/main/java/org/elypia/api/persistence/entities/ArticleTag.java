@@ -14,32 +14,38 @@
  * limitations under the License.
  */
 
-package org.elypia.api.entities;
+package org.elypia.api.persistence.entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * @author seth@elypia.org (Syed Shah)
  */
 @Entity
-@Table(name = "accounts")
-public class User {
+@Table(name = "tags")
+public class ArticleTag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "tag_id")
     private int id;
 
-    @Column(name = "account_id")
-    private int accountId;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "article_id")
+    private Article article;
 
-    @OneToMany
-    @Column(name = "username")
-    private List<Username> usernames;
+    @Column(name = "tag")
+    private String tag;
 
-    public User() {
+    public ArticleTag() {
         // Do nothing
+    }
+
+    public ArticleTag(String tag) {
+        this.tag = tag;
     }
 
     public int getId() {
@@ -50,19 +56,19 @@ public class User {
         this.id = id;
     }
 
-    public int getAccountId() {
-        return accountId;
+    public Article getArticle() {
+        return article;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setArticle(Article article) {
+        this.article = article;
     }
 
-    public List<Username> getUsernames() {
-        return usernames;
+    public String getTag() {
+        return tag;
     }
 
-    public void setUsername(List<Username> usernames) {
-        this.usernames = usernames;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 }

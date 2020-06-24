@@ -15,9 +15,10 @@
 
 plugins {
     id "java"
+    id "application"
     id "idea"
     id "jacoco"
-    id "org.springframework.boot" version "2.2.4.RELEASE"
+    id "org.springframework.boot" version "2.3.1.RELEASE"
     id "io.spring.dependency-management" version "1.0.9.RELEASE"
 }
 
@@ -28,14 +29,23 @@ sourceCompatibility = 11
 targetCompatibility = 11
 
 ext {
-    springVersion = "2.2.4.RELEASE"
+    elypiaiVersion = "4.2.0"
+    springVersion = "2.3.1.RELEASE"
+    hibernateVersion = "5.4.17.Final"
+    validationVersion = "2.0.2"
 }
 
 repositories {
     mavenCentral()
+    
+    // Use Dependencies Locally
+    mavenLocal()
 }
 
 dependencies {
+    // Elypiai
+    implementation "org.elypia.elypiai:companies-house:${elypiaiVersion}"
+
     // Spring
     implementation "org.springframework.boot:spring-boot-starter-web:${springVersion}"
     implementation "org.springframework.boot:spring-boot-starter-security:${springVersion}"
@@ -43,20 +53,29 @@ dependencies {
 
     // Database
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springVersion}"
-    runtimeOnly "mysql:mysql-connector-java:8.0.19"
+    implementation "org.hibernate:hibernate-core:${hibernateVersion}"
+    runtimeOnly "org.hibernate:hibernate-c3p0:${hibernateVersion}"
+    runtimeOnly "mysql:mysql-connector-java:8.0.20"
+
+    // Validation
+    implementation "jakarta.validation:jakarta.validation-api:${validationVersion}"
+    implementation "org.hibernate.validator:hibernate-validator:6.1.5.Final"
 
     // Stripe
-    implementation "com.stripe:stripe-java:17.11.0"
+    implementation "com.stripe:stripe-java:19.24.0"
+
+    // GitLab
+    implementation "org.gitlab4j:gitlab4j-api:4.14.30"
 
     // Logging
     implementation "org.slf4j:slf4j-api:1.7.30"
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
-    runtimeOnly "com.google.cloud:google-cloud-logging-logback:0.116.0-alpha"
+    runtimeOnly "com.google.cloud:google-cloud-logging-logback:0.117.0-alpha"
 
     // Testing
-    testImplementation "org.junit.jupiter:junit-jupiter:5.6.0"
+    testImplementation "org.junit.jupiter:junit-jupiter:5.6.2"
     testImplementation "org.springframework.boot:spring-boot-starter-test:${springVersion}"
-    testImplementation "org.springframework.security:spring-security-test:5.2.2.RELEASE"
+    testImplementation "org.springframework.security:spring-security-test:5.3.3.RELEASE"
     testRuntimeOnly "com.h2database:h2:1.4.200"
 }
 

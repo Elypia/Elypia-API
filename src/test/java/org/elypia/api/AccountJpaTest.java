@@ -16,8 +16,8 @@
 
 package org.elypia.api;
 
-import org.elypia.api.entities.Account;
-import org.elypia.api.repositories.AccountRepository;
+import org.elypia.api.persistence.entities.Account;
+import org.elypia.api.persistence.repositories.AccountRepository;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

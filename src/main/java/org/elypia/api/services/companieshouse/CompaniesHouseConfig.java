@@ -14,41 +14,32 @@
  * limitations under the License.
  */
 
-package org.elypia.api.configuration;
+package org.elypia.api.services.companieshouse;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-/**
- * @author seth@elypia.org (Syed Shah)
- */
-@ConfigurationProperties(prefix = "google.recaptcha")
-public class ReCaptchaConfiguration {
+@ConfigurationProperties("companies-house")
+public class CompaniesHouseConfig {
 
-    private boolean enabled;
-    private String siteKey;
-    private String secretKey;
+    /** API key to authentication to Companies House. */
+    private String apiKey;
 
-    public boolean isEnabled() {
-        return enabled;
+    /** The ID of this backends instances company. */
+    private int companyNumber;
+
+    public String getApiKey() {
+        return apiKey;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
     }
 
-    public String getSiteKey() {
-        return siteKey;
+    public int getCompanyNumber() {
+        return companyNumber;
     }
 
-    public void setSiteKey(String siteKey) {
-        this.siteKey = siteKey;
-    }
-
-    public String getSecretKey() {
-        return secretKey;
-    }
-
-    public void setSecretKey(String secretKey) {
-        this.secretKey = secretKey;
+    public void setCompanyNumber(int companyNumber) {
+        this.companyNumber = companyNumber;
     }
 }

@@ -9,15 +9,15 @@
 
 spring:
   application:
-    name: Elypia API
+    name: "Elypia API"
   datasource:
     continue-on-error: false
   jpa:
-    database-platform: org.hibernate.dialect.MySQL57Dialect
+    database-platform: "org.hibernate.dialect.MySQL57Dialect"
     open-in-view: false
   mail:
-    default-encoding: UTF-8
-    host: smtp-relay.gmail.com
+    default-encoding: "UTF-8"
+    host: "smtp-relay.gmail.com"
     port: 587
-    protocol: smtp
+    protocol: "smtp"
     test-connection: true

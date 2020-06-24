@@ -14,23 +14,9 @@
  * limitations under the License.
  */
 
-package org.elypia.api.repositories;
+package org.elypia.api.services.stripe;
 
-import org.elypia.api.entities.Article;
-import org.springframework.data.jpa.repository.EntityGraph;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
-
-/**
- * @author seth@elypia.org (Syed Shah)
- */
-@Repository
-public interface ArticleRepository extends CrudRepository<Article, Integer> {
-
-    Article findById(int id);
-
-    @EntityGraph(attributePaths = "tags")
-    List<Article> findTop3ByOrderByCreatedDateDesc();
+public enum StripeKeyType {
+    SECRET,
+    PUBLISHABLE
 }

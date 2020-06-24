@@ -14,29 +14,17 @@
  * limitations under the License.
  */
 
-package org.elypia.api.controllers;
+package org.elypia.api.persistence.repositories;
 
-import org.elypia.api.persistence.entities.Account;
-import org.elypia.api.persistence.repositories.AccountRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.elypia.api.persistence.entities.VerificationToken;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author seth@elypia.org (Syed Shah)
  */
-@RequestMapping("/api/accounts")
-@RestController
-public class UserController {
+@Repository
+public interface VerificationRepository extends CrudRepository<VerificationToken, Integer> {
 
-    private AccountRepository accountRepo;
-
-    @Autowired
-    public UserController(AccountRepository accountRepo) {
-        this.accountRepo = accountRepo;
-    }
-
-    @GetMapping
-    public Account getAccount(@RequestParam int userId) {
-        return accountRepo.findById(userId).get();
-    }
+    VerificationToken findByToken(String token);
 }
